@@ -11,3 +11,72 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header-right .name{
+  color: white;
+  font-family: 'Play', sans-serif;
+  font-size: 1rem;
+}
+.header-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;  
+  align-items: right;
+}
+.header-left {
+  display: flex;
+  justify-content: center;  
+  align-items: left;
+}
+.nav-text {
+  color: white;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8 0 8 16px;
+  list-style: none;
+  height: 60px;
+}
+.nav-text a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 4px;
+}
+.nav-text a:hover {
+  background-color: lightblue;
+}
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+.bm-burger-bars {
+  background: white;
+}
+.bm-burger-bars-hover {
+  background: #2583A5;
+}
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+.bm-cross {
+  background: #bdc3c7;
+}
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
