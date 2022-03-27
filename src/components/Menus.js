@@ -15,8 +15,8 @@ export const Menus = [
         cName: 'nav-text'
     },
     {
-        title: 'Sign Up',
-        path: '/signup',
+        title: 'Register',
+        path: '/register',
         icon: <AiIcons.AiFillCrown />,
         cName: 'nav-text'
     },

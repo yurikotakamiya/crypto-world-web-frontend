@@ -20,10 +20,10 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault(); 
         console.log(state)
-        axios.post('https://boiling-sands-35990.herokuapp.com/api/user/login', state)
+        axios.post('https://crypto-world-api.herokuapp.com/api/user/login', state)
         .then(res => {
-            console.log(res);
-            localStorage.setItem('token',res.data.token); 
+            console.log('res: ', res);
+            localStorage.setItem('token',res.data.token);
             push('/home')
         })
         .catch(err => {
