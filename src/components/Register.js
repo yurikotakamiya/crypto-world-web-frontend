@@ -60,44 +60,44 @@ const Register = () => {
     }
 
     const validate = () => {
-        let input = state;
-        let errors = {};
-        let isValid = true;
+        let input = state
+        let errors = {}
+        let isValid = true
     
-        if (!input["username"]) {
-            isValid = false;
-            errors["username"] = "Please enter your User Name.";
+        if (!input['username']) {
+            isValid = false
+            errors['username'] = 'Please enter your User Name.'
         }
     
-        if (!input["email"]) {
-            isValid = false;
-            errors["email"] = "Please enter your email Address.";
+        if (!input['email']) {
+            isValid = false
+            errors['email'] = 'Please enter your email Address.'
         }
     
-        if (typeof input["email"] !== "undefined") {
+        if (typeof input['email'] !== 'undefined') {
             
             var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-            if (!pattern.test(input["email"])) {
-            isValid = false;
-            errors["email"] = "Please enter valid email address.";
+            if (!pattern.test(input['email'])) {
+            isValid = false
+            errors['email'] = 'Please enter valid email address.'
             }
         }
     
-        if (!input["password"]) {
-            isValid = false;
-            errors["password"] = "Please enter your password.";
+        if (!input['password']) {
+            isValid = false
+            errors['password'] = 'Please enter your password.'
         }
     
-        if (!input["confirm_password"]) {
-            isValid = false;
-            errors["confirm_password"] = "Please enter your confirm password.";
+        if (!input['confirm_password']) {
+            isValid = false
+            errors['confirm_password'] = 'Please enter your confirm password.'
         }
     
-        if (typeof input["password"] !== "undefined" && typeof input["confirm_password"] !== "undefined") {
+        if (typeof input['password'] !=='undefined' && typeof input['confirm_password'] !== 'undefined') {
             
-            if (input["password"] != input["confirm_password"]) {
-            isValid = false;
-            errors["password"] = "Passwords don't match.";
+            if (input['password'] != input['confirm_password']) {
+            isValid = false
+            errors['password'] = 'Passwords don\'t match.'
             }
         } 
         
@@ -105,14 +105,14 @@ const Register = () => {
 
         setFormError({
             error : {
-            username: errors["username"],
-            password: errors["password"],
-            confirm_password: errors["confirm_password"],
-            email: errors["email"]
+            username: errors['username'],
+            password: errors['password'],
+            confirm_password: errors['confirm_password'],
+            email: errors['email']
             }
-        });
+        })
         console.log(formError)
-        return isValid;
+        return isValid
     }
 
     return (
