@@ -8,7 +8,7 @@ const NavBar = () => {
     return (
         <div className="header">
             <div className="header-left">
-                <Menu>
+                <Menu right>
                     { Menus.map((menu, index) => {
                         return (
                             <li key={index} className={menu.cName}>

@@ -3,38 +3,38 @@ import * as AiIcons from 'react-icons/ai'
 
 export const Menus = [
     {
-        title: 'Member Login',
-        path: '/login',
-        icon: <AiIcons.AiTwotoneFire />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Instructor Login',
-        path: '/instructorLogin',
-        icon: <AiIcons.AiOutlineNotification />,
-        cName: 'nav-text'
-    },
-    {
         title: 'Register',
         path: '/register',
         icon: <AiIcons.AiFillCrown />,
         cName: 'nav-text'
     },
     {
-        title: 'Member Home',
-        path: '/client',
+        title: 'Login',
+        path: '/login',
+        icon: <AiIcons.AiTwotoneFire />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Orders',
+        path: '/orders',
+        icon: <AiIcons.AiOutlineNotification />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Trades',
+        path: '/trades',
         icon: <AiIcons.AiTwotoneHome />,
         cName: 'nav-text'
     },
     {
-        title: 'Instructor Home',
-        path: '/instructor',
+        title: 'Charts',
+        path: '/charts',
         icon: <AiIcons.AiOutlineHome />,
         cName: 'nav-text'
     },
     {
-        title: 'Search Class',
-        path: '/client',
+        title: 'Setting',
+        path: '/setting',
         icon: <AiIcons.AiOutlineSearch />,
         cName: 'nav-text'
     },
