@@ -4,7 +4,7 @@ import { Menus } from './Menus'
 import { slide as Menu } from 'react-burger-menu'
 
 const NavBar = () => {
-    
+    const session = localStorage.getItem('session')
     return (
         <div className="header">
             <div className="header-left">
@@ -12,7 +12,7 @@ const NavBar = () => {
                     { Menus.map((menu, index) => {
                         return (
                             <li key={index} className={menu.cName}>
-                                <Link to={menu.path}>
+                                <Link to={menu.path} session={session}>
                                     {menu.icon}
                                     <span>{menu.title}</span>
                                 </Link>

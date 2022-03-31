@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import OrderHistory from './OrderHistory'
-import axios from 'axios'
+import axiosWithAuth from '../utils/axiosWithAuth'
 
 const Orders = () => {
 
@@ -17,9 +17,10 @@ const Orders = () => {
             [e.target.name]: e.target.value
         })
     }
+    const user_id = localStorage.getItem('id')
     const handleSubmit = e => {
         e.preventDefault()
-        axios.post(`https://crypto-world-api.herokuapp.com/api/order/history/:user_id`, state)
+        axiosWithAuth().get(`/order/history/${user_id}`, state)
             .then(res => {
                 console.log(res.data)
                 setHistory(res.data)

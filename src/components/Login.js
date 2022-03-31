@@ -20,10 +20,10 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault(); 
         console.log(state)
-        axios.post('https://crypto-world-api.herokuapp.com/api/user/login', state)
+        axios.post('http://localhost:9000/api/user/login', state)
         .then(res => {
-            console.log('res: ', res);
-            localStorage.setItem('token',res.data.token);
+            localStorage.setItem('id', res.data.user_id);
+            localStorage.setItem('sid', res.data.session);
             push('/home')
         })
         .catch(err => {
