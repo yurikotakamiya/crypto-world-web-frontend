@@ -6,6 +6,7 @@ import NavBar from './components/NavBar'
 import Register from './components/Register'
 import Orders from './components/Orders'
 import Logout from './components/Logout'
+import Trades from './components/Trades'
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path='register' element={<Register />} />
           <Route path='orders' element={<Orders />} />
           <Route path='logout' element={<Logout />} />
-          
+          <Route path='trades' element={<Trades />} />
         </Routes>
     </Router>
     
