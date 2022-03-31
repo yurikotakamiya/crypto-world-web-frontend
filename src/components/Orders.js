@@ -27,8 +27,9 @@ const Orders = () => {
     }, [])
 
     return (
-        <div className='orders'>
+        <div className='orders-header'>
             <h1>Your Orders</h1>
+            <h3>Filter out your order by inputting values below each columns.</h3>
             <OrderHistory histories={histories} />
         </div>
     )
