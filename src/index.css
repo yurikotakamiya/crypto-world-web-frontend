@@ -85,11 +85,8 @@ code {
 }
 
 /* about history table */
-.history-table {
-  
-  
+.history-table {  
   width: 90%;
-  border: 1px solid brown;
 }
 .history-header {
   display: flex;
