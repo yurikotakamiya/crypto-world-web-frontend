@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import OrderHistory from './OrderHistory'
-import axiosWithAuth from '../utils/axiosWithAuth'
+// import axiosWithAuth from '../utils/axiosWithAuth'
+import axios from 'axios'
 
 const Orders = () => {
 
@@ -10,7 +11,7 @@ const Orders = () => {
         order_side_id: '',
         order_type_id: ''
     })
-    const [ history, setHistory ] = useState([])
+    const [ histories, setHistory ] = useState([])
     const handleChange = e => {
         setState({
             ...state,
@@ -20,14 +21,31 @@ const Orders = () => {
     const user_id = localStorage.getItem('id')
     const handleSubmit = e => {
         e.preventDefault()
-        axiosWithAuth().get(`/order/history/${user_id}`, state)
+        let stateToSend = {}
+        for (let key in state) {
+            if (state[key] != '') {
+                stateToSend[key] = state[key]
+            }
+        }
+        stateToSend['user_id'] = user_id
+        console.log(stateToSend)
+        
+    }
+    
+    useEffect(() => {
+        const user_id = localStorage.getItem('id')
+        const sid = localStorage.getItem('sid')
+        axios.post(`http://localhost:9000/api/order/history`, {user_id: user_id}, {
+            headers:{
+                sid: sid,
+            }
+        })
             .then(res => {
                 console.log(res.data)
                 setHistory(res.data)
             })
             .catch(e => console.log(e))
-    }
-
+    }, [])
     return (
         <div className='orders'>
             <div className='search-bar'>
@@ -35,7 +53,7 @@ const Orders = () => {
                     <label>
                         Strategy:
                         <select
-                        name='strategy'
+                        name='strategy_id'
                         type='text'
                         value={state.strategy}
                         onChange={handleChange}
@@ -47,7 +65,7 @@ const Orders = () => {
                     <label>
                         Trading Pair:
                         <select
-                        name='trading_pair'
+                        name='trading_pair_id'
                         type='text'
                         value={state.trading_pair}
                         onChange={handleChange}
@@ -90,7 +108,7 @@ const Orders = () => {
                     <button>Search History</button>
                 </form>
             </div>
-            <OrderHistory history={history} />
+            <OrderHistory histories={histories} />
         </div>
     )
 }
