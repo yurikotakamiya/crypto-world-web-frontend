@@ -32,25 +32,22 @@ const Register = () => {
             }
             
             axios.post('https://crypto-world-api.herokuapp.com/api/user/register', stateToSend)
-                .then(res => {                    
+                .then(() => {                    
                     setState({
                         username: '',
                         password: '',
                         confirm_password: '',
                         email: ''
-                    })
-                    console.log(res)
+                    })                    
                     push('/login')
                 })
-                .catch(err => {
+                .catch(() => {
                     push('/register')
-                    console.log(err)
                     setMessage('Username or Email is already taken')
                 })
         } else {
             push('/register')
         }
-        console.log('message: ', message)
     }
 
     const handleChange = e => {

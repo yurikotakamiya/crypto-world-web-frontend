@@ -19,7 +19,6 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); 
-        console.log(state)
         axios.post('http://localhost:9000/api/user/login', state)
         .then(res => {
             localStorage.setItem('id', res.data.user_id);
