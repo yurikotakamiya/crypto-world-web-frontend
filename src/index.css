@@ -11,29 +11,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
   }
-  /* about header */
-  .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .header-right .name{
-    color: white;
-    font-family: 'Play', sans-serif;
-    font-size: 1rem;
-  }
-  .header-right {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;  
-    align-items: right;
-  }
-  .header-left {
-    display: flex;
-  justify-content: center;  
-  align-items: left;
-}
-
 /* about navigation menu */
 .nav-text {
   color: white;
@@ -83,7 +60,6 @@ code {
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
-
 /* about history table */
 .history-table {  
   width: 90%;
@@ -93,4 +69,17 @@ code {
 .error-message {
   color: red;
   font-size: 1rem;
+}
+
+/* about header */
+.header {
+  height: 11vh;
+  background-color: #3DB97A;
+}
+.site-name {
+  color: white;
+  font-size: 3em;
+  font-weight: bold;
+  font-family: 'Jost', sans-serif;
+  padding: 1.5rem;
 }

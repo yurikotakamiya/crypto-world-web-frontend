@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Header from './components/Header'
 import Login from './components/Login'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
@@ -13,6 +14,7 @@ import ApiEdit from './components/ApiEdit'
 function App() {
   return (
     <Router>
+      <Header />
       <NavBar />
         <Routes>
           <Route exact path="/" element={<Home />}/>

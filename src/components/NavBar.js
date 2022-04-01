@@ -1,13 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import { Menus } from './Menus'
 import { slide as Menu } from 'react-burger-menu'
 
 const NavBar = () => {
     const session = localStorage.getItem('session')
     return (
-        <div className="header">
-            <div className="header-left">
+        <div>
+            <div className='menu'>
                 <Menu right>
                     { Menus.map((menu, index) => {
                         return (
@@ -20,9 +20,6 @@ const NavBar = () => {
                         )
                     })}            
                 </Menu>    
-            </div>
-            <div className="header-right">
-                
             </div>
         </div>
     )
