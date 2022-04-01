@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
 // import { useNavigate } from 'react-router-dom'
@@ -8,13 +8,19 @@ import { Link } from 'react-router-dom'
 // import * as AiIcons from 'react-icons/ai'
 
 const ApiKeys = props => {
-    const { exchange_id, api_key, secret_key } = props.api
-    console.log(props.api, exchange_id, api_key, secret_key)
+    const { exchange_id } = props.api
+    const [ exchange_name, setExchange_name] = useState('')
+    useEffect(() => {
+        if(exchange_id == 1) setExchange_name('BINANCE')
+        if(exchange_id == 2) setExchange_name('KUCOIN')
+        if(exchange_id == 3) setExchange_name('FTX')
+    }, [])
+
     return (
         <div key={exchange_id}>
-            <div>Exchange Id: {exchange_id}</div>
-            <div>Api Key: {api_key}</div>
-            <div>Secret Key: {secret_key}</div>
+            <div>Exchange Name: {exchange_name}</div>
+            <div>Api Key: ********************</div>
+            <div>Secret Key: ********************</div>
             <div>
             <Link to={`/settings/${exchange_id}`} className='edit'>
                 <input type='button' className='api-edit-button' value="Edit"/>
@@ -29,24 +35,3 @@ export default ApiKeys
 ApiKeys.propTypes = {
     api: PropTypes.array,
 }
-{/* <div>
-    <ReactFlexyTable data={api} className='api-keys' additionalCols={additionalCols}/>    
-</div> */}
-// const additionalCols = [
-//     {
-//       header: 'Actions',
-//       td: (data) => {
-//         return (
-//           <div>
-//             <div onClick={() => alert('this is delete for id ' + data.id)} >
-//               {<AiIcons.AiOutlineDelete />}                  
-//             </div>
-            
-//             <div onClick={() => alert('this is edit for id ' + data.id)}>
-//               {<AiIcons.AiOutlineEdit />}                                   
-//             </div> 
-//           </div>
-//         )
-//       }
-//     }
-//   ]

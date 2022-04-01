@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
@@ -12,19 +12,7 @@ const ApiEdit = () => {
         api_key: '',
         secret_key: ''
 	});
-
     const user_id = localStorage.getItem('id')
-
-    useEffect(() => {
-        axios.post(`http://localhost:9000/api/setting/edit/${exchange_id}`, {}, {
-            headers: {
-                user_id: user_id
-            }
-        })
-        .then(res => {
-            console.log(res.data)
-        })
-	}, [exchange_id]);
 	
 	const handleChange = (e) => {
         setApiKey({

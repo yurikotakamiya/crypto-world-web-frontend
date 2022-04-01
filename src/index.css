@@ -39,7 +39,7 @@ code {
   color: white;
   display: flex;
   justify-content: start;
-  align-items: center;
+  align-items: start;
   padding: 8 0 8 16px;
   list-style: none;
   height: 60px;
