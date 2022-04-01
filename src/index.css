@@ -89,4 +89,8 @@ code {
   width: 90%;
 }
 
-/* about setting an api key */
+/* about error message */
+.error-message {
+  color: red;
+  font-size: 1rem;
+}

@@ -24,7 +24,7 @@ const Login = () => {
         .then(res => {
             localStorage.setItem('id', res.data.user_id);
             localStorage.setItem('sid', res.data.session);
-            push('/home')
+            push('/orders')
         })
         .catch(err => {
             console.log(err)

@@ -30,27 +30,27 @@ const Register = () => {
                 password: state.password,
                 email: state.email
             }
-            console.log(stateToSend)
             
             axios.post('https://crypto-world-api.herokuapp.com/api/user/register', stateToSend)
-                .then(res => {
-                    console.log(res.data)
-                    setMessage(res.data)
+                .then(res => {                    
                     setState({
                         username: '',
                         password: '',
                         confirm_password: '',
                         email: ''
                     })
-                    push('/home')
+                    console.log(res)
+                    push('/login')
                 })
                 .catch(err => {
                     push('/register')
                     console.log(err)
+                    setMessage('Username or Email is already taken')
                 })
         } else {
             push('/register')
         }
+        console.log('message: ', message)
     }
 
     const handleChange = e => {
@@ -68,13 +68,11 @@ const Register = () => {
         if (!input['username']) {
             isValid = false
             errors['username'] = 'Please enter your User Name.'
-        }
-    
+        }    
         if (!input['email']) {
             isValid = false
             errors['email'] = 'Please enter your email Address.'
-        }
-    
+        }    
         if (typeof input['email'] !== 'undefined') {
             
             var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
@@ -82,28 +80,21 @@ const Register = () => {
             isValid = false
             errors['email'] = 'Please enter valid email address.'
             }
-        }
-    
+        }    
         if (!input['password']) {
             isValid = false
             errors['password'] = 'Please enter your password.'
-        }
-    
+        }    
         if (!input['confirm_password']) {
             isValid = false
             errors['confirm_password'] = 'Please enter your confirm password.'
-        }
-    
-        if (typeof input['password'] !=='undefined' && typeof input['confirm_password'] !== 'undefined') {
-            
+        }    
+        if (typeof input['password'] !=='undefined' && typeof input['confirm_password'] !== 'undefined') {            
             if (input['password'] != input['confirm_password']) {
             isValid = false
             errors['password'] = 'Passwords don\'t match.'
             }
-        } 
-        
-        console.log(errors)
-
+        }         
         setFormError({
             error : {
             username: errors['username'],
@@ -112,7 +103,6 @@ const Register = () => {
             email: errors['email']
             }
         })
-        console.log(formError)
         return isValid
     }
 
@@ -131,7 +121,7 @@ const Register = () => {
                         value={state.username}
                         />
                     </label>
-                    <div className="text-danger">{formError.error.username}</div>
+                    <div className="error-message">{formError.error.username}</div>
 
                     <label>
                         Password
@@ -143,7 +133,7 @@ const Register = () => {
                         value={state.password}
                         />
                     </label>
-                    <div className="text-danger">{formError.error.password}</div>
+                    <div className="error-message">{formError.error.password}</div>
 
                     <label>                        
                         <input
@@ -154,7 +144,7 @@ const Register = () => {
                         value={state.confirm_password}
                         />
                     </label>
-                    <div className="text-danger">{formError.error.confirm_password}</div>
+                    <div className="error-message">{formError.error.confirm_password}</div>
 
                     <label>
                         Email
@@ -165,10 +155,10 @@ const Register = () => {
                         value={state.email}
                         />
                     </label>
-                    <div className="text-danger">{formError.error.email}</div>
+                    <div className='error-message'>{formError.error.email}</div>
                     <button>Sign Up</button>
                     {
-                        message.message ? (<div><h2>{message.message}</h2></div>) : <div></div>
+                        message ? (<div className='error-message'>{message}</div>) : <div></div>
                     }
                 </form>                
             </div>
