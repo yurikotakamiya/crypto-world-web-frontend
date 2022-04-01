@@ -34,7 +34,7 @@ export const Menus = [
     },
     {
         title: 'Setting',
-        path: '/setting',
+        path: '/settings',
         icon: <AiIcons.AiOutlineSearch />,
         cName: 'nav-text'
     },

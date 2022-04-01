@@ -5,7 +5,7 @@ const Logout = () => {
     const push = useNavigate()
     useEffect(() => {
         localStorage.removeItem("id")
-        localStorage.removeItem("session")
+        localStorage.removeItem("sid")
         push('/')
         },[])
     return(<div></div>)

@@ -88,13 +88,5 @@ code {
 .history-table {  
   width: 90%;
 }
-.history-header {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.history-row {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
+
+/* about setting an api key */

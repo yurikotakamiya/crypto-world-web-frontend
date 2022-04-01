@@ -45,6 +45,7 @@ const Register = () => {
                     push('/home')
                 })
                 .catch(err => {
+                    push('/register')
                     console.log(err)
                 })
         } else {
