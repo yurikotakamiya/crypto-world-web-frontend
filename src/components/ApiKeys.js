@@ -1,38 +1,26 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { Routes } from 'react-router-dom'
-import ApiEdit from './ApiEdit'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 // import ReactFlexyTable from 'react-flexy-table'
 // import 'react-flexy-table/dist/index.css'
 // import * as AiIcons from 'react-icons/ai'
 
 const ApiKeys = props => {
-    const { api } = props
-    const push = useNavigate(); 
-
-    const handleClick = e => {
-        console.log(e.target)
-        push('/settings')
-    }    
+    const { exchange_id, api_key, secret_key } = props.api
+    console.log(props.api, exchange_id, api_key, secret_key)
     return (
-        <div>
-            
-            {
-                api.map((a, idx) => {
-                    return (
-                        <div key={idx} className='api-keys' value={idx}>
-                            <h3>Exchange: {a.exchange_id}</h3>
-                            <p>Api Key: {a.api_key}</p>
-                            <p>Secret Key: {a.secret_key}</p>
-                            <button onClick={() => handleClick(a)}>Edit</button>
-                        </div>
-                    )
-                })
-            }
-        <Routes path={`/settings/edit/:api_id`} element={<ApiEdit />} className="edit-api" />
-        </div>
+        <div key={exchange_id}>
+            <div>Exchange Id: {exchange_id}</div>
+            <div>Api Key: {api_key}</div>
+            <div>Secret Key: {secret_key}</div>
+            <div>
+            <Link to={`/settings/${exchange_id}`} className='edit'>
+                <input type='button' className='api-edit-button' value="Edit"/>
+            </Link>
+            </div>
+        </div>    
         )
     }
     

@@ -77,7 +77,10 @@ const Settings = () => {
                 </label>
                 <button>Submit</button>
             </form>
-            <ApiKeys api={api} />
+            {
+                api.map(a => <ApiKeys api={a} key={a.exchange_id} />)
+            }
+            
         </div>
     )
 }

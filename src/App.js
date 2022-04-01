@@ -8,6 +8,7 @@ import Orders from './components/Orders'
 import Logout from './components/Logout'
 import Trades from './components/Trades'
 import Settings from './components/Settings'
+import ApiEdit from './components/ApiEdit'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='logout' element={<Logout />} />
           <Route path='trades' element={<Trades />} />
           <Route path='settings' element={<Settings />} />
+          <Route path='settings/:exchange_id' element={<ApiEdit />} />  
         </Routes>
     </Router>
     
