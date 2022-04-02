@@ -219,3 +219,52 @@ code {
   justify-content: center;
   align-items: center;
 }
+
+/* about register */
+.ComponentContainer{  
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display:flex;
+}
+.ModalContainer{
+  width: 700px;
+  margin: 20 0vh;
+  background: #e3fbe3;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 5px; 
+}
+.register {
+  height: 60vh;
+}
+.register-form  {
+  display:flex;
+  height: 80%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.register-input {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.register-input h3 {
+  text-align: left;
+  margin-bottom: 3px;
+}
+.register-text-box {
+  width: 50em;
+  height: 5vh;
+  border-radius: 5px;
+  border: 1px gray solid;
+}
+.register-text-box-confirm {
+  border: 1px gray solid;
+  border-radius: 5px;
+  width: 50em;
+  height: 5vh;
+  margin-top: 0;
+  padding-top: 0;
+}

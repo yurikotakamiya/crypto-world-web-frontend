@@ -106,58 +106,64 @@ const Register = () => {
     return (
     <div className="ComponentContainer">
         <div className="ModalContainer">
-            <div className="sign-up">
-                <h1>Sign Up!</h1>
-                <form className="Form" onSubmit={handleSubmit}>
-                    <label>
-                        User Name
+            <div className='register'>
+                <h1>Create your account</h1>
+                <form className='register-form' onSubmit={handleSubmit}>
+                    <label className='register-input'>     
+                        <h3>Username</h3>                   
                         <input
                         name="username"
                         type="text"
+                        placeholder='username'
+                        className='register-text-box'
                         onChange={handleChange}
                         value={state.username}
                         />
                     </label>
                     <div className="error-message">{formError.error.username}</div>
 
-                    <label>
-                        Password
+                    <label className='register-input'>
+                        <h3>Password</h3>
                         <input
                         placeholder="password"
                         name="password"
                         type="password"
+                        className='register-text-box'
                         onChange={handleChange}
                         value={state.password}
                         />
                     </label>
                     <div className="error-message">{formError.error.password}</div>
 
-                    <label>                        
+                    <label className='register-input'>                        
                         <input
                         placeholder="confirm"
                         name="confirm_password"
                         type="password"
+                        className='register-text-box-confirm'
                         onChange={handleChange}
                         value={state.confirm_password}
                         />
                     </label>
                     <div className="error-message">{formError.error.confirm_password}</div>
 
-                    <label>
-                        Email
+                    <label className='register-input'>
+                        <h3>Email</h3>
                         <input
                         name="email"
                         type="email"
+                        placeholder='email'
+                        className='register-text-box'
                         onChange={handleChange}
                         value={state.email}
                         />
                     </label>
                     <div className='error-message'>{formError.error.email}</div>
-                    <button>Sign Up</button>
+                    <button className='submit-btn'>Sign Up</button>
+                </form>                
                     {
                         message ? (<div className='error-message'>{message}</div>) : <div></div>
                     }
-                </form>                
             </div>
         </div>
     </div>
