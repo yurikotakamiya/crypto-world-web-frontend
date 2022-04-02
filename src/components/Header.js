@@ -1,8 +1,12 @@
 import React from 'react'
+
 const Header = () => {
+    
     return (
-        <div className='header'>
-            <div className='site-name'>CRYPTO WORLD</div>            
+        <div className='container'>
+            <div className='header'>
+                <div className='site-name'>CRYPTO WORLD</div>            
+            </div>          
         </div>
     )
 }

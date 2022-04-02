@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import Login from './components/Login'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
@@ -14,8 +15,8 @@ import ApiEdit from './components/ApiEdit'
 function App() {
   return (
     <Router>
-      <Header />
       <NavBar />
+      <Header />
         <Routes>
           <Route exact path="/" element={<Home />}/>
           <Route path='login' element={<Login />} />
@@ -27,6 +28,7 @@ function App() {
           <Route path='settings' element={<Settings />} />
           <Route path='settings/:exchange_id' element={<ApiEdit />} />  
         </Routes>
+      <Footer />  
     </Router>
     
     

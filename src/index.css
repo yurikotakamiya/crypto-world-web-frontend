@@ -72,9 +72,17 @@ code {
 }
 
 /* about header */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 .header {
-  height: 11vh;
+  height: 10vh;
+  width: 100%;
   background-color: #3DB97A;
+  position: fixed;
+
 }
 .site-name {
   color: white;
@@ -82,4 +90,94 @@ code {
   font-weight: bold;
   font-family: 'Jost', sans-serif;
   padding: 1.5rem;
+}
+.header-photo{  
+  height:70vh;
+  width: 100%;
+  background-image: url('./images/home-banner.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.header-photo h1 {
+  font-size: 6em;
+}
+.btn-register {
+  padding: 0;
+  height: 5rem;
+  width: 13rem;
+  font-size: 1.5em;
+  background: #3DB97A;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2em;
+}
+
+/* about home body */
+.home-body {
+  text-align: center;
+}
+.home-body h1 {
+  margin-top: 5vh;
+}
+.contact-us {
+  height: 50vh;
+  border: 1px brown solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.contact-info {
+  border: 1px brown solid;
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.contact-form {
+  width: 30%;
+  height: 50vh;
+}
+.contact-form form{
+  height: 100%;
+  border: 1px brown solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+.contact-form input {
+  border-radius: 5px;
+}
+.contact-form .message {
+  height: 10vh;
+  width: 25vw;
+}
+.submit-btn {
+  width: 30%;
+  height: 5vh;
+  margin-top: 10px;
+  background-color: #3DB97A;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+}
+/* about footer */
+.footer {
+  height: 11vh;
+  background-color: #3DB97A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
