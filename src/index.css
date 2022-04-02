@@ -110,32 +110,62 @@ code {
 .btn-register {
   padding: 0;
   height: 5rem;
-  width: 13rem;
+  width: 20rem;
   font-size: 1.5em;
   background: #3DB97A;
   color: white;
   font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   margin-top: 2em;
 }
 
 /* about home body */
+.description-container {  
+  display:flex;
+  justify-content: space-evenly;
+}
 .home-body {
-  text-align: center;
+  width:60%;
+  text-align: center;  
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 5%;  
+}
+
+.description {
+  margin: 20px;
+  width: 50%;   
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-body img {
+  margin: 18px;
 }
 .home-body h1 {
   margin-top: 5vh;
 }
+.middle-button {
+  display: flex;
+  justify-content: center;
+  
+}
+
+/* about contact part */
+.home-contact {
+  margin-top: 10rem;
+}
 .contact-us {
+  margin-top: 3vh;
   height: 50vh;
-  border: 1px brown solid;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background: #e3fbe3;
 }
-.contact-info {
-  border: 1px brown solid;
+.contact-info {  
   width: 30%;
   display: flex;
   flex-wrap: wrap;
@@ -149,7 +179,6 @@ code {
 }
 .contact-form form{
   height: 100%;
-  border: 1px brown solid;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -157,6 +186,15 @@ code {
 }
 .contact-form input {
   border-radius: 5px;
+  border: 1px gray solid;
+}
+.contact-form h2 {
+  margin-bottom: 2px;
+}
+.contact-form .small-input {
+  height: 3vh;
+  width: 15vw;
+  margin-bottom: 5px;
 }
 .contact-form .message {
   height: 10vh;
