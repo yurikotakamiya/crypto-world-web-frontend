@@ -33,19 +33,30 @@ const Login = () => {
     return (
         <div>
             <div className="ComponentContainer">      
-                <div className="ModalContainer">                    
-                    <h1>Login</h1>
+                <div className="ModalContainer">                                        
                     <form onSubmit={handleSubmit}>
-                        <div>
-                            <label htmlFor="username">Username:</label>
-                            <input onChange={handleChange} name="username" id="username" />
-                        </div>
-                        <div>
-                            <label htmlFor="password">Password:</label>
-                            <input onChange={handleChange} name="password" type="password" id="password" />
-                        </div>
-                        <button>Login</button>
-                    </form>                                
+                    <h1>Login</h1>                        
+                        <label className='register-input'>
+                            <h3>Username</h3>
+                            <input 
+                            onChange={handleChange} 
+                            name="username" 
+                            id="username"
+                            className='register-text-box'
+                                />
+                        </label>                        
+                        <label className='register-input'>
+                            <h3>Password</h3>
+                            <input 
+                            onChange={handleChange} 
+                            name="password" 
+                            type="password" 
+                            id="password"
+                            className='register-text-box'
+                            />
+                        </label>                        
+                        <button className='submit-btn'>Login</button>
+                    </form> 
                 </div>
             </div>
         </div>
