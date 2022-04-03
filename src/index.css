@@ -149,8 +149,7 @@ code {
 }
 .middle-button {
   display: flex;
-  justify-content: center;
-  
+  justify-content: center;  
 }
 
 /* about contact part */
@@ -269,3 +268,42 @@ code {
   padding-top: 0;
 }
 
+/* order and trade page */
+.orders-header {
+  margin: 15vh 10vh;  
+}
+
+/* about setting page */
+.setting {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display:flex;
+}
+.setting-container {  
+  width: 30em;
+  margin: 20 0vh;
+  background: #e3fbe3;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 5px; 
+  align-items: center;
+}
+.api-keys {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.api-edit-btn {
+  height: 5vh;
+  width: 4vw;
+  background: #3DB97A;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 5vh;
+  margin: 2%;
+}

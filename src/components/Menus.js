@@ -3,6 +3,12 @@ import * as AiIcons from 'react-icons/ai'
 
 export const Menus = [
     {
+        title: 'Home',
+        path: '/',
+        icon: <AiIcons.AiTwotoneHome />,
+        cName: 'nav-text'
+    },
+    {
         title: 'Register',
         path: '/register',
         icon: <AiIcons.AiFillCrown />,

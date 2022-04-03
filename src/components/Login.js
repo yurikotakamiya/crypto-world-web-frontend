@@ -8,7 +8,9 @@ const Login = () => {
     const [ state, setState ] = useState({
         username: '', 
         password: ''
-    }); 
+    }) 
+
+    const [ error, setError ] = useState('')
 
     const handleChange = (e) => {
         setState({
@@ -27,6 +29,7 @@ const Login = () => {
         })
         .catch(err => {
             console.log(err)
+            setError('your input was invalid')
         });
     };
 
@@ -55,6 +58,9 @@ const Login = () => {
                             className='register-text-box'
                             />
                         </label>                        
+                        {
+                            error ? <div className='error-message'>{error}</div> : <div></div>
+                        }
                         <button className='submit-btn'>Login</button>
                     </form> 
                 </div>

@@ -12,13 +12,13 @@ const ApiKeys = props => {
     }, [])
 
     return (
-        <div key={exchange_id}>
-            <div>Exchange Name: {exchange_name}</div>
-            <div>Api Key: ********************</div>
-            <div>Secret Key: ********************</div>
+        <div className='api-keys' key={exchange_id}>
+            <h3>Exchange Name: {exchange_name}</h3>
+            <h3>Api Key: ********************</h3>
+            <h3>Secret Key: ********************</h3>
             <div>
             <Link to={`/settings/${exchange_id}`} className='edit'>
-                <input type='button' className='api-edit-button' value="Edit"/>
+                <input type='button' className='api-edit-btn' value="Edit"/>
             </Link>
             </div>
         </div>    

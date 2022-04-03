@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
@@ -13,6 +13,13 @@ const ApiEdit = () => {
         secret_key: ''
 	});
     const user_id = localStorage.getItem('id')
+	const [ exchange_name, setExchange_name] = useState('')
+    
+	useEffect(() => {
+        if(exchange_id == 1) setExchange_name('BINANCE')
+        if(exchange_id == 2) setExchange_name('KUCOIN')
+        if(exchange_id == 3) setExchange_name('FTX')
+    }, [])
 	
 	const handleChange = (e) => {
         setApiKey({
@@ -39,30 +46,35 @@ const ApiEdit = () => {
 	
 	const { api_key, secret_key } = apiKey;
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-				<div className="modal-header">						
-					<h4 className="modal-title">Editing <strong>{exchange_id}</strong></h4>
-				</div>
-				<div className="modal-body">
-					<div className="form-group">
-						<label>Exchange Id</label>
-						<input value={exchange_id} onChange={handleChange} name="exchange_id" type="text" className="form-control"/>
+        <div className='ComponentContainer'>
+			<div className='ModalContainer'>
+				<form onSubmit={handleSubmit}>				
+					<h1>Edit {exchange_name} Api Key</h1>																	
+						<label className='register-input'>
+							<h3>New Api Key</h3>
+							<input value={api_key} 
+							onChange={handleChange} 
+							name="api_key" 
+							type="text" 
+							className='register-text-box'
+							/>
+						</label>
+				
+						<label className='register-input'>
+							<h3>New Secret Key</h3>
+							<input value={secret_key} 
+							onChange={handleChange} 
+							name="secret_key" 
+							type="text" 
+							className='register-text-box'
+							/>
+						</label>										
+					<div className="edit-btn">			    
+						<input type="submit" className="api-edit-btn" value="Save"/>
+						<Link to={`/settings`}><input type="button" className="api-edit-btn" value="Cancel"/></Link>
 					</div>
-					<div className="form-group">
-						<label>New Api Key</label>
-						<input value={api_key} onChange={handleChange} name="api_key" type="text" className="form-control"/>
-					</div>
-					<div className="form-group">
-						<label>New Secret Key</label>
-						<input value={secret_key} onChange={handleChange} name="secret_key" type="text" className="form-control"/>
-					</div>
-				</div>
-				<div className="modal-footer">			    
-					<input type="submit" className="btn btn-info" value="Save"/>
-					<Link to={`/settings`}><input type="button" className="btn btn-default" value="Cancel"/></Link>
-				</div>
-			</form>
+				</form>
+			</div>
         </div>
     )
 }
