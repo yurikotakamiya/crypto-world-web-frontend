@@ -14,6 +14,8 @@ import ApiEdit from './components/ApiEdit'
 import UsernameEdit from './components/UsernameEdit'
 import EmailEdit from './components/EmailEdit'
 import PasswordEdit from './components/PasswordEdit'
+import NewApi from './components/NewApi'
+import StrategyConfig from './components/StrategyConfig'
 
 
 
@@ -30,12 +32,13 @@ function App() {
           <Route path='orders' element={<Orders />} />
           <Route path='logout' element={<Logout />} />
           <Route path='trades' element={<Trades />} />
-          <Route path='settings' element={<Settings />} />
-          <Route path='settings/:exchange_id' element={<ApiEdit />} />  
-          <Route path='settings/username/:user_id' element={<UsernameEdit />} />
-          <Route path='settings/email/:user_id' element={<EmailEdit />} />
-          <Route path='settings/password/:user_id' element={<PasswordEdit />} />
-
+          <Route exact path='settings' element={<Settings />} />
+          <Route exact path='settings/strategy_config' element={<StrategyConfig />} />
+          <Route exact path='settings/:exchange_id' element={<ApiEdit />} />  
+          <Route exact path='settings/username/:user_id' element={<UsernameEdit />} />
+          <Route exact path='settings/email/:user_id' element={<EmailEdit />} />
+          <Route exact path='settings/password/:user_id' element={<PasswordEdit />} />
+          <Route exact path='settings/api_config' element={<NewApi />} />
         </Routes>
       <Footer />  
     </Router>
