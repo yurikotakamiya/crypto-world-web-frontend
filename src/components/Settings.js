@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ApiKeys from './ApiKeys'
+import UserInfo from './UserInfo'
 
 const Settings = () => {
     const [ state, setState ] = useState({
@@ -9,13 +10,13 @@ const Settings = () => {
         secret_key: ''
     })
     const [ api, setApi ] = useState([])
+    const [ user, setUser ] = useState({})
     const [ error, setError ] = useState('')
     const handleChange = e => {
         setState({
             ...state,
             [e.target.name]: e.target.value
         })
-        console.log(state)
     }
     const handleSubmit = e => {
         e.preventDefault()
@@ -26,17 +27,16 @@ const Settings = () => {
             }
         })
         .then(res => {
-            console.log(res.data)
             setApi(res.data)
         })
-        .catch(e => {
-            console.log(e)
+        .catch(() => {
             setError('your input was invalid')
         })
 
     }
     useEffect(() => {
         const user_id = localStorage.getItem('id')
+        const sid = localStorage.getItem('sid')
         axios.post(`http://localhost:9000/api/setting/confirm`, {}, {
             headers:{
                 user_id: user_id,
@@ -44,7 +44,17 @@ const Settings = () => {
         })
         .then(res => {
             setApi(res.data)
-            console.log(api)
+        })
+        .catch(e => console.log(e))
+
+        axios.post(`http://localhost:9000/api/user/user_info`, {}, {
+            headers:{
+                user_id: user_id,
+                sid: sid
+            }
+        })
+        .then(res => {
+            setUser(res.data)
         })
         .catch(e => console.log(e))
     }, [])
@@ -53,6 +63,9 @@ const Settings = () => {
         <div className='setting'>
             <div className='setting-container'>
                 <h1>Settings</h1>
+            </div>
+            <div className='user-info'>
+                <UserInfo user={user} />
             </div>
                 {api.length == 0 ? (<form className='api-form' onSubmit={handleSubmit}>
                     <label className='register-input'>                                
@@ -64,7 +77,7 @@ const Settings = () => {
                         className='register-text-box'>
                             <option value=''>-- Select Exchange --</option>
                             <option value='1'>Binance</option>
-                            <option value='2'>Ku Coin</option>
+                            <option value='2'>KuCoin</option>
                             <option value='3'>FTX</option>
                         </select>
                     </label>

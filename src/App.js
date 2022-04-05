@@ -11,6 +11,11 @@ import Logout from './components/Logout'
 import Trades from './components/Trades'
 import Settings from './components/Settings'
 import ApiEdit from './components/ApiEdit'
+import UsernameEdit from './components/UsernameEdit'
+import EmailEdit from './components/EmailEdit'
+import PasswordEdit from './components/PasswordEdit'
+
+
 
 function App() {
   return (
@@ -27,6 +32,10 @@ function App() {
           <Route path='trades' element={<Trades />} />
           <Route path='settings' element={<Settings />} />
           <Route path='settings/:exchange_id' element={<ApiEdit />} />  
+          <Route path='settings/username/:user_id' element={<UsernameEdit />} />
+          <Route path='settings/email/:user_id' element={<EmailEdit />} />
+          <Route path='settings/password/:user_id' element={<PasswordEdit />} />
+
         </Routes>
       <Footer />  
     </Router>
