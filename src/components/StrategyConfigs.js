@@ -35,6 +35,7 @@ const StrategyConfigs = () => {
         axios.post('http://localhost:9000/api/strategy/delete', toDelete)
         .then(res => console.log(res.data))
         .catch(e => console.log(e))
+        push(`/settings/strategy_configs`)
     }
 
     useEffect(() => {
