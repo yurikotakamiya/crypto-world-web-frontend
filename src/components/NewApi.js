@@ -30,6 +30,12 @@ const NewApi = () => {
         })
         .then(res => {
             setApi(res.data)
+            setState({
+                exchange_id: '',
+                api_key: '',
+                secret_key: ''
+            })
+            setAddApi(!addApi)
         })
         .catch(() => {
             setError('your input was invalid')

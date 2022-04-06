@@ -38,7 +38,7 @@ const Settings = () => {
             </div>
             <div className='strategy-setting'>
                 <h3>Strategy Configuration</h3>
-                <Link to={'/settings/strategy_config'} >
+                <Link to={'/settings/strategy_configs'} >
                     <input type='button' className='api-edit-btn' value='edit' />                    
                 </Link>
             </div>

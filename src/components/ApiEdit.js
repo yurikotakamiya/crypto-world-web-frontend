@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const ApiEdit = () => {
-    const push = useNavigate();
-    
-    const { exchange_id } = useParams();
+    const push = useNavigate()
+    const { exchange_id } = useParams()
 	const [ apiKey, setApiKey ] = useState({
 		exchange_id: exchange_id,
         api_key: '',

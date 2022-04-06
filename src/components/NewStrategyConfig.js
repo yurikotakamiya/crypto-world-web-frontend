@@ -1,0 +1,212 @@
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+
+const initialState = {
+    exchange_id: '',
+    trading_pair_id: '',
+    strategy_id: '',
+    param_interval_order_size: 0,
+    param_interval_price_interval: 0,
+    param_interval_profit_price_change: 0,
+    param_interval_start_price: 0,
+}
+
+const StrategyConfig = () => {
+    const user_id = localStorage.getItem('id')
+    const sid = localStorage.getItem('sid')
+    const [ exchange, setExchange ] = useState([])
+    const [ tradingPair, setTradingPair ] = useState([])
+    const [ strategy, setStrategy ] = useState([])
+    const [ state, setState ] = useState(initialState)
+    const [ error, setError ] = useState({})
+    const push = useNavigate(); 
+
+    const handleChange = e => {
+        setState({
+            ...state,
+            [e.target.name] : e.target.value
+        })
+    }
+    const handleSubmit = e => {
+        e.preventDefault()
+        let validated = validate()
+        console.log(state)
+        if (validated) {
+            axios.post('http://localhost:9000/api/strategy/send', state, {
+                headers: {
+                    user_id: user_id,
+                    sid: sid
+                }
+            })
+            .then(res => {
+                console.log('inserted :' ,res.data)
+                setState(initialState)
+                push('/settings/strategy_configs')           
+            })
+            .catch(e => console.log(e))
+        }
+    }
+    const validate = () => {
+        let input = state
+        let errors = {}
+        let isValid = true
+    
+        if (!input['exchange_id']) {
+            isValid = false
+            errors['exchange_id'] = 'Please select exchange.'
+        }    
+        if (!input['trading_pair_id']) {
+            isValid = false
+            errors['trading_pair_id'] = 'Please select trading pair.'
+        }                
+        if (!input['strategy_id']) {
+            isValid = false
+            errors['strategy_id'] = 'Please select strategy.'
+        }    
+        if (input['strategy_id'] == 1) {
+            if (!input['param_interval_order_size'] || !input['param_interval_price_interval']
+                || !input['param_interval_profit_price_change'] || !input['param_interval_start_price']) {
+                    isValid = false
+                    errors['params'] = 'Please fill out parameter'
+                }
+        }
+        setError({
+            exchange_id: errors['exchange_id'],
+            trading_pair_id: errors['trading_pair_id'],
+            strategy_id: errors['strategy_id'],
+            params: errors['params']            
+        })
+        return isValid
+    }
+
+    useEffect(() => {
+        axios.post('http://localhost:9000/api/strategy/get_exchange', {}, {
+            headers: {
+                user_id: user_id,
+                sid: sid
+            }
+        })
+            .then(res => setExchange(res.data))
+            .catch(e => console.log(e))
+
+        axios.get('http://localhost:9000/api/strategy/get_trading_pair')
+            .then(res => setTradingPair(res.data))
+            .catch(e => console.log(e))
+    
+        axios.get('http://localhost:9000/api/strategy/get_strategy')
+            .then(res => setStrategy(res.data))
+            .catch(e => console.log(e))
+    }, [])
+    
+    return (
+        <div className='strategy_config'>
+            <form onSubmit={handleSubmit}>
+                <label className='register-input'>                                
+                    <h3>Exchange Name</h3>
+                    <select 
+                    name='exchange_id' 
+                    onChange={handleChange}
+                    value={state.exchange_id}
+                    className='register-text-box'
+                    >
+                        <option value=''>-- Select Exchange --</option>                    
+                        {
+                            exchange.map((e, idx) => {                                
+                                return (
+                                    <option key={idx} value={e.exchange_id}>{e.exchange_name}</option>
+                                )
+                            })
+                        }
+                    </select>
+                </label>
+                <div className="error-message">{error.exchange_id}</div>
+
+                <label className='register-input'>                                
+                    <h3>Trading Pair</h3>
+                    <select 
+                    name='trading_pair_id' 
+                    onChange={handleChange}
+                    value={state.trading_pair_id}
+                    className='register-text-box'>
+                        <option value=''>-- Select Trading Pair --</option>                        
+                        {
+                            tradingPair.map((tr, idx) => {
+                                return (
+                                    <option key={idx} value={tr.trading_pair_id}>{tr.trading_pair_name}</option>                                    
+                                )
+                            })
+                        }
+                    </select>
+                </label>
+                <div className="error-message">{error.trading_pair_id}</div>
+
+                <label className='register-input'>                                
+                    <h3>Strategy</h3>
+                    <select 
+                    name='strategy_id' 
+                    onChange={handleChange}
+                    value={state.strategy_id}
+                    className='register-text-box'>
+                        <option value=''>-- Select Strategy --</option>                        
+                        {
+                            strategy.map((st, idx) => {
+                                return (
+                                    <option key={idx} value={st.strategy_id}>{st.strategy_name}</option>                                    
+                                )
+                            })
+                        }
+                    </select>
+                </label>
+                <div className="error-message">{error.strategy_id}</div>
+
+                {
+                    state.strategy_id == 1 ? (<label className='register-input'>
+                        <h3>Parameter (REQUIRED)</h3>
+                        <h4>Order Size</h4>
+                        <input 
+                        placeholder='Order size'
+                        name='param_interval_order_size'
+                        type='number'
+                        value={state.param_interval_order_size}
+                        onChange={handleChange}
+                        className='register-text-box'
+                        />
+                        <h4>Price Interval</h4>
+                        <input 
+                        placeholder='Price Interval'
+                        name='param_interval_price_interval'
+                        type='number'
+                        value={state.param_interval_price_interval}
+                        onChange={handleChange}
+                        className='register-text-box'
+                        />
+                        <h4>Profit Price Change</h4>
+                        <input 
+                        placeholder='Profit Price Change'
+                        name='param_interval_profit_price_change'
+                        type='number'
+                        value={state.param_interval_profit_price_change}
+                        onChange={handleChange}
+                        className='register-text-box'
+                        />
+                        <h4>Start Price</h4>
+                        <input 
+                        placeholder='Start Price'
+                        name='param_interval_start_price'
+                        type='number'
+                        value={state.param_interval_start_price}
+                        onChange={handleChange}
+                        className='register-text-box'
+                        />
+                    </label> ) : <div></div>
+                }
+                <div className="error-message">{error.params}</div>
+
+                <button className='api-edit-btn'>Submit</button>
+            </form>
+        </div>
+    )
+}
+
+export default StrategyConfig
