@@ -42,6 +42,12 @@ const Settings = () => {
                     <input type='button' className='api-edit-btn' value='edit' />                    
                 </Link>
             </div>
+            <div className='monitor-setting'>
+                <h3>Monitor Configuration</h3>
+                <Link to={'/settings/monitor_configs'} >
+                    <input type='button' className='api-edit-btn' value='edit' />                    
+                </Link>
+            </div>
         </div>
     )
 }

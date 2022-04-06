@@ -5,19 +5,17 @@ import axios from 'axios'
 const initialState = {
     exchange_id: '',
     trading_pair_id: '',
-    strategy_id: '',
-    param_interval_order_size: 0,
-    param_interval_price_interval: 0,
-    param_interval_profit_price_change: 0,
-    param_interval_start_price: 0,
+    monitor_id: '',    
+    param_rsi_high_threshold: 0,
+    param_rsi_low_threshold: 0,
 }
 
-const NewStrategyConfig = () => {
+const NewMonitorConfig = () => {
     const user_id = localStorage.getItem('id')
     const sid = localStorage.getItem('sid')
     const [ exchange, setExchange ] = useState([])
     const [ tradingPair, setTradingPair ] = useState([])
-    const [ strategy, setStrategy ] = useState([])
+    const [ monitor, setMonitor ] = useState([])
     const [ state, setState ] = useState(initialState)
     const [ error, setError ] = useState({})
     const push = useNavigate(); 
@@ -31,18 +29,16 @@ const NewStrategyConfig = () => {
     const handleSubmit = e => {
         e.preventDefault()
         let validated = validate()
-        console.log(state)
         if (validated) {
-            axios.post('http://localhost:9000/api/strategy/send', state, {
+            axios.post('http://localhost:9000/api/monitor/send', state, {
                 headers: {
                     user_id: user_id,
                     sid: sid
                 }
             })
-            .then(res => {
-                console.log('inserted :' ,res.data)
+            .then(() => {                
                 setState(initialState)
-                push('/settings/strategy_configs')           
+                push('/settings/monitor_configs')           
             })
             .catch(e => console.log(e))
         }
@@ -60,13 +56,12 @@ const NewStrategyConfig = () => {
             isValid = false
             errors['trading_pair_id'] = 'Please select trading pair.'
         }                
-        if (!input['strategy_id']) {
+        if (!input['monitor_id']) {
             isValid = false
-            errors['strategy_id'] = 'Please select strategy.'
+            errors['monitor_id'] = 'Please select monitor name.'
         }    
-        if (input['strategy_id'] == 1) {
-            if (!input['param_interval_order_size'] || !input['param_interval_price_interval']
-                || !input['param_interval_profit_price_change'] || !input['param_interval_start_price']) {
+        if (input['monitor_id'] == 1) {
+            if (!input['param_rsi_low_threshold'] || !input['param_rsi_high_threshold']) {
                     isValid = false
                     errors['params'] = 'Please fill out parameter'
                 }
@@ -74,19 +69,14 @@ const NewStrategyConfig = () => {
         setError({
             exchange_id: errors['exchange_id'],
             trading_pair_id: errors['trading_pair_id'],
-            strategy_id: errors['strategy_id'],
+            monitor_id: errors['monitor_id'],
             params: errors['params']            
         })
         return isValid
     }
 
     useEffect(() => {
-        axios.post('http://localhost:9000/api/strategy/get_exchange', {}, {
-            headers: {
-                user_id: user_id,
-                sid: sid
-            }
-        })
+        axios.get('http://localhost:9000/api/monitor/get_exchange')
             .then(res => setExchange(res.data))
             .catch(e => console.log(e))
 
@@ -94,9 +84,9 @@ const NewStrategyConfig = () => {
             .then(res => setTradingPair(res.data))
             .catch(e => console.log(e))
     
-        axios.get('http://localhost:9000/api/strategy/get_strategy')
-            .then(res => setStrategy(res.data))
-            .catch(e => console.log(e))
+        axios.get('http://localhost:9000/api/monitor/get_monitors')
+        .then(res => setMonitor(res.data))
+        .catch(e => console.log(e))
     }, [])
     
     return (
@@ -114,7 +104,7 @@ const NewStrategyConfig = () => {
                         {
                             exchange.map((e, idx) => {                                
                                 return (
-                                    <option key={idx} value={e.exchange_id}>{e.exchange_name}</option>
+                                    <option key={idx} value={e.exchange_id}>{e.description}</option>
                                 )
                             })
                         }
@@ -142,17 +132,17 @@ const NewStrategyConfig = () => {
                 <div className="error-message">{error.trading_pair_id}</div>
 
                 <label className='register-input'>                                
-                    <h3>Strategy</h3>
+                    <h3>Monitor</h3>
                     <select 
-                    name='strategy_id' 
+                    name='monitor_id' 
                     onChange={handleChange}
-                    value={state.strategy_id}
+                    value={state.monitor_id}
                     className='register-text-box'>
-                        <option value=''>-- Select Strategy --</option>                        
+                        <option value=''>-- Select Monitor --</option>                        
                         {
-                            strategy.map((st, idx) => {
+                            monitor.map((st, idx) => {
                                 return (
-                                    <option key={idx} value={st.strategy_id}>{st.strategy_name}</option>                                    
+                                    <option key={idx} value={st.monitor_id}>{st.monitor_name}</option>                                    
                                 )
                             })
                         }
@@ -161,41 +151,23 @@ const NewStrategyConfig = () => {
                 <div className="error-message">{error.strategy_id}</div>
 
                 {
-                    state.strategy_id == 1 ? (<label className='register-input'>
+                    state.monitor_id == 1 ? (<label className='register-input'>
                         <h3>Parameter (REQUIRED)</h3>
-                        <h4>Order Size</h4>
+                        <h4>Low Threshold</h4>
                         <input 
-                        placeholder='Order size'
-                        name='param_interval_order_size'
+                        placeholder='Low Threshold'
+                        name='param_rsi_low_threshold'
                         type='number'
-                        value={state.param_interval_order_size}
+                        value={state.param_rsi_low_threshold}
                         onChange={handleChange}
                         className='register-text-box'
                         />
-                        <h4>Price Interval</h4>
+                        <h4>High Threshold</h4>
                         <input 
-                        placeholder='Price Interval'
-                        name='param_interval_price_interval'
+                        placeholder='High Threshold'
+                        name='param_rsi_high_threshold'
                         type='number'
-                        value={state.param_interval_price_interval}
-                        onChange={handleChange}
-                        className='register-text-box'
-                        />
-                        <h4>Profit Price Change</h4>
-                        <input 
-                        placeholder='Profit Price Change'
-                        name='param_interval_profit_price_change'
-                        type='number'
-                        value={state.param_interval_profit_price_change}
-                        onChange={handleChange}
-                        className='register-text-box'
-                        />
-                        <h4>Start Price</h4>
-                        <input 
-                        placeholder='Start Price'
-                        name='param_interval_start_price'
-                        type='number'
-                        value={state.param_interval_start_price}
+                        value={state.param_rsi_high_threshold}
                         onChange={handleChange}
                         className='register-text-box'
                         />
@@ -209,4 +181,4 @@ const NewStrategyConfig = () => {
     )
 }
 
-export default NewStrategyConfig
+export default NewMonitorConfig

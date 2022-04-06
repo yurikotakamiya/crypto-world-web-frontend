@@ -15,6 +15,8 @@ import UsernameEdit from './components/UsernameEdit'
 import EmailEdit from './components/EmailEdit'
 import PasswordEdit from './components/PasswordEdit'
 import NewApi from './components/NewApi'
+import MonitorConfigs from './components/MonitorConfigs'
+import MonitorConfigsEdit from './components/MonitorConfigsEdit'
 import StrategyConfigs from './components/StrategyConfigs'
 import StrategyConfigsEdit from './components/StrategyConfigsEdit'
 
@@ -35,6 +37,8 @@ function App() {
           <Route path='trades' element={<Trades />} />
           <Route exact path='settings' element={<Settings />} />
           <Route exact path='settings/strategy_configs' element={<StrategyConfigs />} />
+          <Route exact path='settings/monitor_configs' element={<MonitorConfigs />} />
+          <Route exact path='settings/monitor_configs/edit/:id' element={<MonitorConfigsEdit />} />
           <Route exact path='settings/strategy_configs/edit/:id' element={<StrategyConfigsEdit />} />
           <Route exact path='settings/:exchange_id' element={<ApiEdit />} />  
           <Route exact path='settings/username/:user_id' element={<UsernameEdit />} />
