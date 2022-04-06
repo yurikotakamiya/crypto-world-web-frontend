@@ -75,7 +75,7 @@ const StrategyConfigsEdit = () => {
                 sid: sid
             }
         })
-        .then(res => setState(res.data[id]))
+        .then(res => setState(res.data[id - 1]))
         .catch(e => console.log(e))
 
         axios.post('http://localhost:9000/api/strategy/get_exchange', {}, {
@@ -97,12 +97,12 @@ const StrategyConfigsEdit = () => {
                     if (res.data[i].trading_pair_id == state.trading_pair_id) setTradingPair(res.data[i].trading_pair_name)                    
                 }                
             })
-            .catch(e => console.log(e))
-            console.log('tradingPair:' ,tradingPair)
+            .catch(e => console.log(e))      
+
         axios.get('http://localhost:9000/api/strategy/get_strategy')
             .then(res => setStrategy(res.data))
             .catch(e => console.log(e))
-    }, [id])
+    }, [])
     return (
             <div className='strategy_config'>
             <form onSubmit={handleSubmit}>
