@@ -80,38 +80,36 @@ const PasswordEdit = () => {
     return (
         <div className='ComponentContainer'>
 			<div className='ModalContainer'>
-				<form onSubmit={handleSubmit}>				
+				<form onSubmit={handleSubmit} className='text-boxes'>				
 					<h1>Edit Password</h1>																						
-                        <label className='register-input'>
+                        <label>
 							<h3>Current Password</h3>
 							<input value={current_password} 
 							onChange={handleChange} 
 							name='current_password'
 							type='password' 
-							className='register-text-box'
+							className='text-box'
 							/>
 						</label>
-                        <label className='register-input'>
+                        <label>
 							<h3>New Password</h3>
 							<input value={new_password} 
 							onChange={handleChange} 
 							name='new_password'
 							type='password'
                             placeholder='new password' 
-							className='register-text-box'
+							className='text-box'
 							/>
                             <input value={confirm_password} 
 							onChange={handleChange} 
 							name='confirm_password'
 							type='password'
                             placeholder='confirm' 
-							className='register-text-box'
+							className='text-box'
 							/>
-						</label>
-					<div className='edit-btn'>			    
-						<input type='submit' className="api-edit-btn" value="Save"/>
-						<Link to={`/settings`}><input type="button" className="api-edit-btn" value="Cancel"/></Link>
-					</div>
+						</label>					
+					<button className='form-btn'>Save</button>
+					<Link to={`/settings`}><button className='form-cancel-btn' value="Cancel">Cancel</button></Link>					
 					<div className="error-message">{error.current_password}</div>
 					<div className="error-message">{error.new_password}</div>
 					<div className="error-message">{error.confirm_password}</div>

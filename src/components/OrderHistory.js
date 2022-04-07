@@ -8,7 +8,11 @@ const OrderHistory = props => {
     
     return (
         <div className='history-table'>
-            <ReactFlexyTable data={histories} filterable className='data-table'/>    
+            {
+                histories == 0 ? <h1>You have no order</h1>
+                :
+                <ReactFlexyTable data={histories} filterable className='data-table'/>    
+            }
         </div>
     )
 }

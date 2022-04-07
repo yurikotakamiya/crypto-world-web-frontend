@@ -32,22 +32,25 @@ const PasswordEdit = () => {
     return (
         <div className='ComponentContainer'>
 			<div className='ModalContainer'>
-				<form onSubmit={handleSubmit}>				
+				<form onSubmit={handleSubmit} className='text-boxes'>				
 					<h1>Edit Username</h1>	
-						<label className='register-input'>
+						<label>
 							<h3>New Username</h3>
-							<input value={username} 
+							<input 
+							value={username} 
 							onChange={handleChange} 
 							name='username' 
 							type='text'
-							className='register-text-box'
+							placeHolder='Username'
+							className='text-box'
 							/>
-						</label>				
-					<div className='edit-btn'>			    
-						<input type='submit' className="api-edit-btn" value="Save"/>
-						<Link to={`/settings`}><input type="button" className="api-edit-btn" value="Cancel"/></Link>
-						<div className="error-message">{error}</div>
-					</div>
+						</label>									
+					<input type='submit' className='form-btn' value="Save"/>
+					<Link to={`/settings`}>
+						<input type="button" className='form-cancel-btn' value="Cancel"/>
+					</Link>
+				
+					<div className="error-message">{error}</div>
 				</form>
 			</div>
         </div>

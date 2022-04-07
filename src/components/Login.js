@@ -37,31 +37,30 @@ const Login = () => {
         <div>
             <div className="ComponentContainer">      
                 <div className="ModalContainer">                                        
-                    <form onSubmit={handleSubmit}>
-                    <h1>Login</h1>                        
-                        <label className='register-input'>
+                    <form onSubmit={handleSubmit} className='text-boxes'>           
+                        <label>
                             <h3>Username</h3>
                             <input 
                             onChange={handleChange} 
                             name="username" 
                             id="username"
-                            className='register-text-box'
+                            className='text-box'
                                 />
                         </label>                        
-                        <label className='register-input'>
+                        <label>
                             <h3>Password</h3>
                             <input 
                             onChange={handleChange} 
                             name="password" 
                             type="password" 
                             id="password"
-                            className='register-text-box'
+                            className='text-box'
                             />
                         </label>                        
                         {
                             error ? <div className='error-message'>{error}</div> : <div></div>
                         }
-                        <button className='submit-btn'>Login</button>
+                        <button className='form-btn'>Login</button>
                     </form> 
                 </div>
             </div>

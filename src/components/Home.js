@@ -80,14 +80,14 @@ const Home = () => {
                         <p>1234 Main Street
                         Somewhere NY</p>
                         <p>New York 12345</p>
-                        <div><a href='tel:+1-123-456-7890'>123-456-7890</a></div>
-                        <div><a href='mailto:info@cryptoWorld.com'>info@cryptoWorld.com</a></div>
+                        <a href='tel:+1-123-456-7890'>123-456-7890</a>
+                        <a href='mailto:info@cryptoWorld.com'>info@cryptoWorld.com</a>
                     </div>
                     <div className='contact-form'>
                         <form onSubmit={handleSubmit}>          
                             <label>
-                            <h2>Input your name</h2>
-                            <input
+                                <h2>Input your name</h2>
+                                <input
                                 name='firstName'
                                 type='firstName'
                                 onChange={handleChange}
@@ -96,7 +96,7 @@ const Home = () => {
                                 value={state.firstName}
                                 />
                             </label>
-                            <input
+                                <input
                                 name='lastName'
                                 type='lastName'
                                 onChange={handleChange}
@@ -106,7 +106,7 @@ const Home = () => {
                                 />                            
                             <label>
                             <h2>Input your email</h2>
-                            <input
+                                <input
                                 name='email'
                                 type='email'
                                 placeholder='Email'
@@ -126,7 +126,7 @@ const Home = () => {
                                 placeholder='Write something here.'
                                 />
                             </label>
-                            <button className='submit-btn'>Submit</button>
+                            <button className='small-btn'>SEND</button>
                         </form>
                     </div>
                 </div>

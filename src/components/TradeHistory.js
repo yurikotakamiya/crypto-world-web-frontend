@@ -8,7 +8,11 @@ const TradeHistory = props => {
     
     return (
         <div className='history-table'>
-            <ReactFlexyTable data={histories} filterable/>    
+            {
+                histories == 0 ? <h1>You have no trade history</h1>
+                :
+                <ReactFlexyTable data={histories} filterable className='data-table'/>    
+            }
         </div>
     )
 }

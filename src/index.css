@@ -9,8 +9,8 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-  }
+  monospace;
+}
 /* about navigation menu */
 .nav-text {
   color: white;
@@ -80,9 +80,8 @@ code {
 .header {
   height: 10vh;
   width: 100%;
-  background-color: #3DB97A;
+  background-color: black;
   position: fixed;
-
 }
 .site-name {
   color: white;
@@ -133,7 +132,6 @@ code {
   justify-content: space-evenly;
   margin: 5%;  
 }
-
 .description {
   margin: 20px;
   width: 50%;   
@@ -162,7 +160,7 @@ code {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background: #e3fbe3;
+  background: gray;
 }
 .contact-info {  
   width: 30%;
@@ -171,6 +169,12 @@ code {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+}
+.contact-info h1 {
+  font-weight: 300;
+}
+.contact-info p, a {
+  font-size: larger;
 }
 .contact-form {
   width: 30%;
@@ -189,6 +193,7 @@ code {
 }
 .contact-form h2 {
   margin-bottom: 2px;
+  font-weight: 300;
 }
 .contact-form .small-input {
   height: 3vh;
@@ -197,13 +202,13 @@ code {
 }
 .contact-form .message {
   height: 10vh;
-  width: 25vw;
+  width: 20vw;
 }
-.submit-btn {
-  width: 30%;
+.small-btn {
+  width: 50%;
   height: 5vh;
   margin-top: 10px;
-  background-color: #3DB97A;
+  background-color: black;
   border: none;
   border-radius: 5px;
   color: white;
@@ -213,7 +218,9 @@ code {
 /* about footer */
 .footer {
   height: 11vh;
-  background-color: #3DB97A;
+  width: 100%;
+  background-color: black;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -221,48 +228,28 @@ code {
 
 /* about register */
 .ComponentContainer{  
+  color: white;
   height: 100vh;
   justify-content: center;
   align-items: center;
   display:flex;
+  background: #282828;
 }
 .ModalContainer{
-  width: 700px;
+  width: 40%;
   margin: 20 0vh;
-  background: #e3fbe3;
+  background: gray;
   padding: 2rem;
   text-align: center;
   border-radius: 5px; 
 }
 .register {
-  height: 60vh;
-}
-.register-form  {
-  display:flex;
-  height: 80%;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.register-input {
-  display:flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.register-input h3 {
-  text-align: left;
-  margin-bottom: 3px;
-}
-.register-text-box {
-  width: 50em;
-  height: 5vh;
-  border-radius: 5px;
-  border: 1px gray solid;
+  height: 53vh;
 }
 .register-text-box-confirm {
   border: 1px gray solid;
   border-radius: 5px;
-  width: 50em;
+  width: 99.4%;
   height: 5vh;
   margin-top: 0;
   padding-top: 0;
@@ -274,22 +261,85 @@ code {
 }
 
 /* about setting page */
-.setting {
-  height: 100vh;
+.setting {  
   justify-content: center;
   align-items: center;
   flex-direction: column;
   display:flex;
 }
-.setting-container {  
-  width: 30em;
-  margin: 20 0vh;
-  background: #e3fbe3;
+.setting-title {  
+  width: 100%;
+  margin-top: 10vh;
   padding: 2rem;
   text-align: center;
   border-radius: 5px; 
   align-items: center;
 }
+hr {
+  border-top: 1px dashed gray;
+}
+/* about general setting */
+.user-infos {
+  width: 20%;
+}
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+/* about config setting */
+.configs {
+  width: 20%;
+  margin-bottom: 5vh;
+}
+.config-setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+/* about edit general setting  */
+.text-box {
+  width: 99.4%;
+  height: 5vh;
+  border-radius: 5px;
+  border: 1px gray solid;
+}
+.text-boxes h3 {
+  text-align: left;
+  margin-bottom: 3px;
+}
+.form-btn {
+  width: 100%;
+  height: 5vh;
+  margin-top: 10px;
+  background-color: #449AFF;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+}
+.form-cancel-btn {
+  width: 100%;
+  height: 5vh;
+  margin-top: 10px;
+  background-color: lightblue;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+form {
+  border: red solid 1px;
+  
+}
+
+/* about setting for api keys */
 .api-keys {
   display: flex;
   justify-content: space-between;
@@ -311,8 +361,9 @@ code {
   margin: 10%;
 }
 
-/* about order history table */
+/* about any table */
 .data-table tr {
-  --rft-main-color: orange;
+  --rft-main-color: black;
   font-weight: bold;
+  --rft-button-color: #449AFF;
 }
