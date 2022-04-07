@@ -5,6 +5,7 @@ import ReactFlexyTable from 'react-flexy-table'
 import 'react-flexy-table/dist/index.css'
 import * as AiIcons from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 const StrategyConfigs = () => {
@@ -32,10 +33,14 @@ const StrategyConfigs = () => {
         .then(res => setToDelete(res.data[id - 1]))
         .catch(e => console.log(e))
         
-        axios.post('http://localhost:9000/api/strategy/delete', toDelete)
-        .then(res => console.log(res.data))
-        .catch(e => console.log(e))
-        push(`/settings/strategy_configs`)
+        let proceed = confirm("Are you sure you want to delete it?")
+        if (proceed) {
+            axios.post('http://localhost:9000/api/strategy/delete', toDelete)
+            .then(() => push('/settings'))
+            .catch(e => console.log(e))            
+        } else {
+            push(`/settings/strategy_configs`)            
+        }
     }
 
     useEffect(() => {
@@ -48,9 +53,8 @@ const StrategyConfigs = () => {
         .then(res => {
             let toShow = res.data
             console.log(res.data)
-            if (res.data == 0) {
-                setExistConfig(false)
-            }
+            if (res.data == 0) setExistConfig(false)
+            else setExistConfig(true)
             let newConfigs = []
             for (let i = 0; i < toShow.length; i++) {
                 newConfigs[i] = {
@@ -76,14 +80,17 @@ const StrategyConfigs = () => {
                         <button onClick={() => handleDelete(data.id)}>{<AiIcons.AiOutlineDelete/>}</button>                
                     </div>)}}]
     return (
-        <div className='strategy_config'>            
+        <div className='config-data'>
+            <h1>Strategy Configuration</h1>        
             {
                 existConfig ? 
                 <ReactFlexyTable data={configsToShow} className='data-table' additionalCols={additionalCols}/>
                 :
-                <h1>You dont have configs yet</h1>
-            }
-            <button onClick={handleAdd}>Add New Config from here</button>
+                <h2>You have no strategy configuration data yet...</h2> 
+            }            
+            <Link to={'/settings/new_strategy_configs'} className='add-button-div'>
+                <button onClick={handleAdd} className='add-button'>Add a New Config</button>
+            </Link>            
             {
                 add ? <NewStrategyConfigs /> : <div></div>
             }

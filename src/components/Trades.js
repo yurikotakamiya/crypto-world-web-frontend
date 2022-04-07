@@ -26,8 +26,7 @@ const Trades = () => {
 
     return (
         <div className='orders-header'>
-            <h1>Your Trades</h1>
-            <h3>Filter out your trade by inputting values below each columns.</h3>
+            <h1>Your Trades</h1>            
             <TradeHistory histories={histories} />
         </div>
     )

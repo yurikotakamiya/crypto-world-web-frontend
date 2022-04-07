@@ -100,111 +100,135 @@ const NewStrategyConfig = () => {
     }, [])
     
     return (
-        <div className='strategy_config'>
-            <form onSubmit={handleSubmit}>
-                <label className='register-input'>                                
-                    <h3>Exchange Name</h3>
-                    <select 
-                    name='exchange_id' 
-                    onChange={handleChange}
-                    value={state.exchange_id}
-                    className='register-text-box'
-                    >
-                        <option value=''>-- Select Exchange --</option>                    
-                        {
-                            exchange.map((e, idx) => {                                
-                                return (
-                                    <option key={idx} value={e.exchange_id}>{e.exchange_name}</option>
-                                )
-                            })
-                        }
-                    </select>
-                </label>
-                <div className="error-message">{error.exchange_id}</div>
-
-                <label className='register-input'>                                
-                    <h3>Trading Pair</h3>
-                    <select 
-                    name='trading_pair_id' 
-                    onChange={handleChange}
-                    value={state.trading_pair_id}
-                    className='register-text-box'>
-                        <option value=''>-- Select Trading Pair --</option>                        
-                        {
-                            tradingPair.map((tr, idx) => {
-                                return (
-                                    <option key={idx} value={tr.trading_pair_id}>{tr.trading_pair_name}</option>                                    
-                                )
-                            })
-                        }
-                    </select>
-                </label>
-                <div className="error-message">{error.trading_pair_id}</div>
-
-                <label className='register-input'>                                
-                    <h3>Strategy</h3>
-                    <select 
-                    name='strategy_id' 
-                    onChange={handleChange}
-                    value={state.strategy_id}
-                    className='register-text-box'>
-                        <option value=''>-- Select Strategy --</option>                        
-                        {
-                            strategy.map((st, idx) => {
-                                return (
-                                    <option key={idx} value={st.strategy_id}>{st.strategy_name}</option>                                    
-                                )
-                            })
-                        }
-                    </select>
-                </label>
-                <div className="error-message">{error.strategy_id}</div>
-
-                {
-                    state.strategy_id == 1 ? (<label className='register-input'>
-                        <h3>Parameter (REQUIRED)</h3>
-                        <h4>Order Size</h4>
-                        <input 
-                        placeholder='Order size'
-                        name='param_interval_order_size'
-                        type='number'
-                        value={state.param_interval_order_size}
+        <div className='ComponentContainer'>
+            <div className='ModalContainer'>
+                <h1>Add a New Strategy</h1>
+                <form onSubmit={handleSubmit} className='text-boxes'>                    
+                    <label>                                
+                        <div className='required'>
+                            <h3>Exchange Name</h3>                                
+                            <h5>*</h5>
+                        </div>
+                        <select 
+                        name='exchange_id' 
                         onChange={handleChange}
-                        className='register-text-box'
-                        />
-                        <h4>Price Interval</h4>
-                        <input 
-                        placeholder='Price Interval'
-                        name='param_interval_price_interval'
-                        type='number'
-                        value={state.param_interval_price_interval}
-                        onChange={handleChange}
-                        className='register-text-box'
-                        />
-                        <h4>Profit Price Change</h4>
-                        <input 
-                        placeholder='Profit Price Change'
-                        name='param_interval_profit_price_change'
-                        type='number'
-                        value={state.param_interval_profit_price_change}
-                        onChange={handleChange}
-                        className='register-text-box'
-                        />
-                        <h4>Start Price</h4>
-                        <input 
-                        placeholder='Start Price'
-                        name='param_interval_start_price'
-                        type='number'
-                        value={state.param_interval_start_price}
-                        onChange={handleChange}
-                        className='register-text-box'
-                        />
-                    </label> ) : <div></div>
-                }
-                <div className="error-message">{error.params}</div>
+                        value={state.exchange_id}
+                        className='text-box'
+                        >
+                            <option value=''>-- Select Exchange --</option>                    
+                            {
+                                exchange.map((e, idx) => {                                
+                                    return (
+                                        <option key={idx} value={e.exchange_id}>{e.exchange_name}</option>
+                                    )
+                                })
+                            }
+                        </select>
+                    </label>
+                    <div className="error-message">{error.exchange_id}</div>
 
-                <button className='api-edit-btn'>Submit</button>
-            </form>
+                    <label>                  
+                        <div className='required'>                                
+                            <h3>Trading Pair</h3>
+                            <h5>*</h5>
+                        </div>              
+                        <select 
+                        name='trading_pair_id' 
+                        onChange={handleChange}
+                        value={state.trading_pair_id}
+                        className='text-box'
+                        >
+                            <option value=''>-- Select Trading Pair --</option>                        
+                            {
+                                tradingPair.map((tr, idx) => {
+                                    return (
+                                        <option key={idx} value={tr.trading_pair_id}>{tr.trading_pair_name}</option>                                    
+                                    )
+                                })
+                            }
+                        </select>
+                    </label>
+                    <div className="error-message">{error.trading_pair_id}</div>
+
+                    <label>              
+                        <div className='required'>
+                            <h3>Strategy</h3>                        
+                            <h5>*</h5>
+                        </div>                  
+                        <select 
+                        name='strategy_id' 
+                        onChange={handleChange}
+                        value={state.strategy_id}
+                        className='text-box'>
+                            <option value=''>-- Select Strategy --</option>                        
+                            {
+                                strategy.map((st, idx) => {
+                                    return (
+                                        <option key={idx} value={st.strategy_id}>{st.strategy_name}</option>                                    
+                                    )
+                                })
+                            }
+                        </select>
+                    </label>
+                    <div className="error-message">{error.strategy_id}</div>
+
+                    {
+                        state.strategy_id == 1 ? (<label>                            
+                            <div className='required'>
+                                <h3>Order Size</h3>                            
+                                <h5>*</h5>
+                            </div>
+                            <input 
+                            placeholder='Order size'
+                            name='param_interval_order_size'
+                            type='number'
+                            value={state.param_interval_order_size}
+                            onChange={handleChange}
+                            className='text-box'
+                            />
+                            <div className='required'>
+                                <h3>Price Interval</h3>                                
+                                <h5>*</h5>
+                            </div>
+                            <input 
+                            placeholder='Price Interval'
+                            name='param_interval_price_interval'
+                            type='number'
+                            value={state.param_interval_price_interval}
+                            onChange={handleChange}
+                            className='text-box'
+                            />
+                            <div className='required'>
+                                <h3>Profit Price Change</h3>                                
+                                <h5>*</h5>
+                            </div>
+                            <input 
+                            placeholder='Profit Price Change'
+                            name='param_interval_profit_price_change'
+                            type='number'
+                            value={state.param_interval_profit_price_change}
+                            onChange={handleChange}
+                            className='text-box'
+                            />
+                            <div className='required'>
+                                <h3>Start Price</h3>
+                                <h5>*</h5>
+                            </div>
+                            <input 
+                            placeholder='Start Price'
+                            name='param_interval_start_price'
+                            type='number'
+                            value={state.param_interval_start_price}
+                            onChange={handleChange}
+                            className='text-box'
+                            />
+                        </label> ) : <div></div>
+                    }
+                    <div className="error-message">{error.params}</div>
+
+                    <button className='form-btn'>Submit</button>
+                </form>
+            </div>
         </div>
     )
 }

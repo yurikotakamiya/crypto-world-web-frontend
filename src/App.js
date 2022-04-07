@@ -19,7 +19,7 @@ import MonitorConfigs from './components/MonitorConfigs'
 import MonitorConfigsEdit from './components/MonitorConfigsEdit'
 import StrategyConfigs from './components/StrategyConfigs'
 import StrategyConfigsEdit from './components/StrategyConfigsEdit'
-
+import NewStrategyConfig from './components/NewStrategyConfig'
 
 
 function App() {
@@ -40,6 +40,7 @@ function App() {
           <Route exact path='settings/monitor_configs' element={<MonitorConfigs />} />
           <Route exact path='settings/monitor_configs/edit/:id' element={<MonitorConfigsEdit />} />
           <Route exact path='settings/strategy_configs/edit/:id' element={<StrategyConfigsEdit />} />
+          <Route exact path='settings/new_strategy_configs' element={<NewStrategyConfig />} />
           <Route exact path='settings/:exchange_id' element={<ApiEdit />} />  
           <Route exact path='settings/username/:user_id' element={<UsernameEdit />} />
           <Route exact path='settings/email/:user_id' element={<EmailEdit />} />

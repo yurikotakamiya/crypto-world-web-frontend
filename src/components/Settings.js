@@ -36,7 +36,7 @@ const Settings = () => {
                 <div className='config-setting'>
                     <h3>Api Configuration</h3>
                     <Link to={'/settings/api_config'} >
-                    <input type='button' className='api-edit-btn' value="Edit"/>
+                        <input type='button' className='api-edit-btn' value="Edit"/>
                     </Link>
                 </div>
                 <div className='config-setting'>
@@ -48,7 +48,7 @@ const Settings = () => {
                 <div className='config-setting'>
                     <h3>Monitor Configuration</h3>
                     <Link to={'/settings/monitor_configs'} >
-                    <input type='button' className='api-edit-btn' value="Edit"/>
+                        <input type='button' className='api-edit-btn' value="Edit"/>
                     </Link>
                 </div>
             </div>

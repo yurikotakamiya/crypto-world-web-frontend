@@ -11,7 +11,10 @@ const TradeHistory = props => {
             {
                 histories == 0 ? <h1>You have no trade history</h1>
                 :
-                <ReactFlexyTable data={histories} filterable className='data-table'/>    
+                <div>
+                    <h3>Filter out your trade by inputting values below each columns.</h3>
+                    <ReactFlexyTable data={histories} filterable className='data-table'/>    
+                </div>
             }
         </div>
     )

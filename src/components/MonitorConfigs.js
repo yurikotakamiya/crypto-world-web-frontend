@@ -30,9 +30,14 @@ const MonitorConfigs = () => {
         .then(res => setToDelete(res.data[id - 1]))
         .catch(e => console.log(e))
 
-        axios.post('http://localhost:9000/api/monitor/delete', toDelete)
-        .then(() => push(`/settings/monitor_configs`))
-        .catch(e => console.log(e))
+        let proceed = confirm("Are you sure you want to proceed?");
+        if (proceed) {
+            axios.post('http://localhost:9000/api/monitor/delete', toDelete)
+            .then(() => push(`/settings`))
+            .catch(e => console.log(e))
+        } else {
+            push('/settings/monitor_configs')
+        }
     }
 
     useEffect(() => {
@@ -73,11 +78,14 @@ const MonitorConfigs = () => {
         <div className='strategy_config'>            
             {
                 existConfig ? 
-                <ReactFlexyTable data={configsToShow} className='data-table' additionalCols={additionalCols}/>
+                <div>
+                    <h1>Monitor configuration</h1>
+                    <ReactFlexyTable data={configsToShow} className='data-table' additionalCols={additionalCols}/>
+                </div>
                 :
-                <h1>You dont have configs yet</h1>
+                <h1>You have no monitor configuration data yet...</h1>
             }
-            <button onClick={handleAdd}>Add New Config from here</button>
+            <button onClick={handleAdd} className='form-btn'>Add New Config from here</button>
             {
                 add ? <NewMonitorConfigs /> : <div></div>
             }
