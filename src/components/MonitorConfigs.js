@@ -5,6 +5,8 @@ import ReactFlexyTable from 'react-flexy-table'
 import 'react-flexy-table/dist/index.css'
 import * as AiIcons from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 
 const MonitorConfigs = () => {
     const [ add, setAdd ] = useState(false)
@@ -61,6 +63,7 @@ const MonitorConfigs = () => {
                     trading_pair: toShow[i].trading_pair,
                     param_rsi_low_threshold: toShow[i].param_rsi_low_threshold,
                     param_rsi_high_threshold: toShow[i].param_rsi_high_threshold,
+                    param_rsi_time_interval: toShow[i].param_rsi_time_interval
                 }                                
             }
             setConfigsToShow(newConfigs)
@@ -75,20 +78,25 @@ const MonitorConfigs = () => {
                         <button onClick={() => handleDelete(data.id)}>{<AiIcons.AiOutlineDelete/>}</button>
                     </div>)}}]
     return (
-        <div className='strategy_config'>            
+        <div className='config-data'>            
+            <h1>Monitor configuration</h1>
             {
                 existConfig ? 
                 <div>
-                    <h1>Monitor configuration</h1>
                     <ReactFlexyTable data={configsToShow} className='data-table' additionalCols={additionalCols}/>
                 </div>
                 :
-                <h1>You have no monitor configuration data yet...</h1>
+                <p>You have no monitor configuration data yet...</p>
             }
-            <button onClick={handleAdd} className='form-btn'>Add New Config from here</button>
+            <Link to={'/settings/new_monitor_configs'} className='add-button-div'>
+                <button onClick={handleAdd} className='add-button'>Add New Config from here</button>
+            </Link>
             {
                 add ? <NewMonitorConfigs /> : <div></div>
             }
+            <Link to={'/settings'}>
+                <button className='back-btn'>GO BACK TO SETTING</button>
+            </Link>  
         </div>
     )
 }

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import bitcoinImg from '../images/bitcoin.jpeg'
 import phoneImg from '../images/phone.jpeg'
 import tryoutImg from '../images/tryout.jpeg'
+import Footer from './Footer'
 import axios from 'axios'
 const Home = () => {
     const push = useNavigate()
@@ -131,6 +132,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <Footer />  
         </div>
     )
 }

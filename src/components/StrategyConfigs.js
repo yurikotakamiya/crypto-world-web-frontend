@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import NewStrategyConfigs from './NewStrategyConfig'
 import axios from 'axios'
 import ReactFlexyTable from 'react-flexy-table'
 import 'react-flexy-table/dist/index.css'
@@ -52,8 +51,7 @@ const StrategyConfigs = () => {
         })
         .then(res => {
             let toShow = res.data
-            console.log(res.data)
-            if (res.data == 0) setExistConfig(false)
+            if (toShow == 0) setExistConfig(false)
             else setExistConfig(true)
             let newConfigs = []
             for (let i = 0; i < toShow.length; i++) {
@@ -86,14 +84,14 @@ const StrategyConfigs = () => {
                 existConfig ? 
                 <ReactFlexyTable data={configsToShow} className='data-table' additionalCols={additionalCols}/>
                 :
-                <h2>You have no strategy configuration data yet...</h2> 
+                <p>You have no strategy configuration data yet...</p> 
             }            
             <Link to={'/settings/new_strategy_configs'} className='add-button-div'>
                 <button onClick={handleAdd} className='add-button'>Add a New Config</button>
+            </Link> 
+            <Link to={'/settings'}>
+                <button className='back-btn'>GO BACK TO SETTING</button>
             </Link>            
-            {
-                add ? <NewStrategyConfigs /> : <div></div>
-            }
         </div>
     )
 }

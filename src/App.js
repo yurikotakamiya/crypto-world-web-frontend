@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
-import Footer from './components/Footer'
 import Login from './components/Login'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
@@ -20,7 +19,7 @@ import MonitorConfigsEdit from './components/MonitorConfigsEdit'
 import StrategyConfigs from './components/StrategyConfigs'
 import StrategyConfigsEdit from './components/StrategyConfigsEdit'
 import NewStrategyConfig from './components/NewStrategyConfig'
-
+import NewMonitorConfig from './components/NewMonitorConfig'
 
 function App() {
   return (
@@ -41,13 +40,14 @@ function App() {
           <Route exact path='settings/monitor_configs/edit/:id' element={<MonitorConfigsEdit />} />
           <Route exact path='settings/strategy_configs/edit/:id' element={<StrategyConfigsEdit />} />
           <Route exact path='settings/new_strategy_configs' element={<NewStrategyConfig />} />
+          <Route exact path='settings/new_monitor_configs' element={<NewMonitorConfig />} />
           <Route exact path='settings/:exchange_id' element={<ApiEdit />} />  
           <Route exact path='settings/username/:user_id' element={<UsernameEdit />} />
           <Route exact path='settings/email/:user_id' element={<EmailEdit />} />
           <Route exact path='settings/password/:user_id' element={<PasswordEdit />} />
           <Route exact path='settings/api_config' element={<NewApi />} />
         </Routes>
-      <Footer />  
+      
     </Router>
     
     

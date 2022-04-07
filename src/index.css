@@ -118,6 +118,11 @@ code {
   border-radius: 8px;
   margin-top: 2em;
 }
+.btn-register:hover {
+  background-color: lightgreen;
+  transform: rotate(360deg);
+  transform: scale(1.01);
+}
 
 /* about home body */
 .description-container {  
@@ -230,7 +235,7 @@ code {
 .ComponentContainer{  
   color: white;
   margin-top: 10vh;
-  height: 100%;
+  height: 100vh;
   justify-content: center;
   align-items: center;
   display:flex;
@@ -330,6 +335,14 @@ hr {
   color: white;
   font-weight: bold;
   font-size: 1em;
+}
+.back-btn {  
+  height: 5vh;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  color: gray; 
+  font-size: 0.8em;
 }
 .form-cancel-btn {
   width: 100%;
