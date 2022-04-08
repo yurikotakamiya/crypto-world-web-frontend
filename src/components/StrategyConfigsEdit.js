@@ -27,10 +27,7 @@ const StrategyConfigsEdit = () => {
                     sid: sid
                 }
             })
-            .then(res => {
-                console.log('edited :' ,res.data)                
-                push('/settings/strategy_configs')           
-            })
+            .then(() => push('/settings/strategy_configs'))
             .catch(e => console.log(e))
         }
     }
