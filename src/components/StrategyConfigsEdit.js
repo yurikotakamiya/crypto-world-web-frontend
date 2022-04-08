@@ -19,7 +19,7 @@ const StrategyConfigsEdit = () => {
     const handleSubmit = e => {
         e.preventDefault()
         let validated = validate()
-        console.log(state)
+        
         if (validated) {
             axios.post('http://localhost:9000/api/strategy/edit', state, {
                 headers: {
