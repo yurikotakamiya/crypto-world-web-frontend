@@ -4,9 +4,7 @@ import axios from 'axios'
 
 const MonitorConfigsEdit = () => {
     const [ state, setState ] = useState({})
-    const [ exchange, setExchange ] = useState('')
     const [ interval, setInterval ] = useState([])
-    const [ tradingPair, setTradingPair ] = useState([])
     const [ monitor, setMonitor ] = useState([])
     const push = useNavigate()
     const { id } = useParams()
@@ -73,23 +71,7 @@ const MonitorConfigsEdit = () => {
         })
         .then(res => setState(res.data[id - 1]))
         .catch(e => console.log(e))
-
-        axios.get('http://localhost:9000/api/monitor/get_exchange')
-            .then(res => {            
-                for (let i = 0; i < res.data.length; i++) {
-                    if (res.data[i].exchange_id == state.exchange_id) setExchange(res.data[i].exchange_name)
-                }                
-            })
-            .catch(e => console.log(e))
-
-        axios.get('http://localhost:9000/api/strategy/get_trading_pair')
-            .then(res => {
-                for (let i = 0; i < res.data.length; i++) {
-                    if (res.data[i].trading_pair_id == state.trading_pair_id) setTradingPair(res.data[i].trading_pair_name)                    
-                }                
-            })
-            .catch(e => console.log(e))      
-
+               
         axios.get('http://localhost:9000/api/monitor/get_monitors')
             .then(res => setMonitor(res.data))
             .catch(e => console.log(e))
@@ -102,8 +84,8 @@ const MonitorConfigsEdit = () => {
         <div className='ComponentContainer'>
         <div className='ModalContainer'>
             <form onSubmit={handleSubmit} className='text-boxes'>
-                <h3>Exchange Name: {exchange}</h3>               
-                <h3>Trading Pair: {tradingPair}</h3>
+                <h3>Exchange Name: {state.exchange_name}</h3>               
+                <h3>Trading Pair: {state.trading_pair}</h3>
                 <label>                       
                     <div className='required'>
                         <h3>Monitor Method</h3>

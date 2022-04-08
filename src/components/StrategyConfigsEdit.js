@@ -4,8 +4,6 @@ import axios from 'axios'
 
 const StrategyConfigsEdit = () => {
     const [ state, setState ] = useState({})
-    const [ exchange, setExchange ] = useState('')
-    const [ tradingPair, setTradingPair ] = useState([])
     const [ strategy, setStrategy ] = useState([])
     const push = useNavigate()
     const { id } = useParams()
@@ -78,27 +76,6 @@ const StrategyConfigsEdit = () => {
         .then(res => setState(res.data[id - 1]))
         .catch(e => console.log(e))
 
-        axios.post('http://localhost:9000/api/strategy/get_exchange', {}, {
-            headers: {
-                user_id: user_id,
-                sid: sid
-            }
-        })
-            .then(res => {            
-                for (let i = 0; i < res.data.length; i++) {
-                    if (res.data[i].exchange_id == state.exchange_id) setExchange(res.data[i].exchange_name)                    
-                }                
-            })
-            .catch(e => console.log(e))
-
-        axios.get('http://localhost:9000/api/strategy/get_trading_pair')
-            .then(res => {
-                for (let i = 0; i < res.data.length; i++) {
-                    if (res.data[i].trading_pair_id == state.trading_pair_id) setTradingPair(res.data[i].trading_pair_name)                    
-                }                
-            })
-            .catch(e => console.log(e))      
-
         axios.get('http://localhost:9000/api/strategy/get_strategy')
             .then(res => setStrategy(res.data))
             .catch(e => console.log(e))
@@ -109,8 +86,8 @@ const StrategyConfigsEdit = () => {
                 <h1>Edit your Strategy</h1>
                 <form onSubmit={handleSubmit} className='text-boxes'>
                     <hr width='500'/>
-                    <h2>Exchange Name: {exchange}</h2>               
-                    <h2>Trading Pair: {tradingPair}</h2>
+                    <h2>Exchange Name: {state.exchange_name}</h2>               
+                    <h2>Trading Pair: {state.trading_pair}</h2>
                     <hr width='500'/>
                     <label>              
                         <div className='required'>                            
