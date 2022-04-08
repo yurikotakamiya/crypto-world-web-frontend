@@ -130,7 +130,7 @@ code {
   justify-content: space-evenly;
 }
 .home-body {
-  width:60%;
+  width:65%;
   text-align: center;  
   display:flex;
   flex-wrap: wrap;
