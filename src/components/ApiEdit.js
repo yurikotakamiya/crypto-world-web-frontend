@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const ApiEdit = () => {
     const push = useNavigate()
     const { exchange_id } = useParams()
+	const [ exchange_name, setExchange_name] = useState('')
 	const [ apiKey, setApiKey ] = useState({
 		exchange_id: exchange_id,
         api_key: '',
         secret_key: ''
 	});
     const user_id = localStorage.getItem('id')
-	const [ exchange_name, setExchange_name] = useState('')
+    const sid = localStorage.getItem('sid')
     
 	useEffect(() => {
         if(exchange_id == 1) setExchange_name('BINANCE')
@@ -29,9 +29,10 @@ const ApiEdit = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(apiKey)
-        axios.post(`http://localhost:9000/api/setting/modify`, apiKey, {
+        axios.post(`http://localhost:9000/api/apis/modify`, apiKey, {
             headers: {
-                user_id: user_id
+                user_id: user_id,
+				sid: sid
             }
         })
             .then(res=>{
@@ -47,30 +48,29 @@ const ApiEdit = () => {
     return (
         <div className='ComponentContainer'>
 			<div className='ModalContainer'>
-				<form onSubmit={handleSubmit}>				
+				<form onSubmit={handleSubmit} className='text-boxes'>				
 					<h1>Edit {exchange_name} Api Key</h1>																	
-						<label className='register-input'>
+						<label>
 							<h3>New Api Key</h3>
 							<input value={api_key} 
 							onChange={handleChange} 
 							name="api_key" 
 							type="text" 
-							className='register-text-box'
+							className='text-box'
 							/>
 						</label>
 				
-						<label className='register-input'>
+						<label>
 							<h3>New Secret Key</h3>
 							<input value={secret_key} 
 							onChange={handleChange} 
 							name="secret_key" 
 							type="text" 
-							className='register-text-box'
+							className='text-box'
 							/>
 						</label>										
 					<div className="edit-btn">			    
-						<input type="submit" className="api-edit-btn" value="Save"/>
-						<Link to={`/settings`}><input type="button" className="api-edit-btn" value="Cancel"/></Link>
+						<input type="submit" className='form-btn' value="Save"/>						
 					</div>
 				</form>
 			</div>

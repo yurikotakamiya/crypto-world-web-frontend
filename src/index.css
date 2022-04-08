@@ -374,11 +374,9 @@ hr {
   font-size: 0.9em;
 }
 /* about setting for api keys */
-.api-keys {
+.api-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
+  justify-content: center;
 }
 .api-edit-btn {
   height: 5vh;
@@ -391,8 +389,17 @@ hr {
   margin-bottom: 5vh;
   margin: 2%;
 }
+.api-edit {    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   
+  text-decoration: none;
+}
 .config-data {
   margin: 15vh;
+}
+.api-info {
+  width: 20vw;
 }
 
 /* about any table */

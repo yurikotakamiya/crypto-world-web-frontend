@@ -37,6 +37,7 @@ const MonitorConfigs = () => {
             axios.post('http://localhost:9000/api/monitor/delete', toDelete)
             .then(() => push(`/settings`))
             .catch(e => console.log(e))
+            console.log('')
         } else {
             push('/settings/monitor_configs')
         }

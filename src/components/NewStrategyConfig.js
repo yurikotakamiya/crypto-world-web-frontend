@@ -30,8 +30,7 @@ const NewStrategyConfig = () => {
     }
     const handleSubmit = e => {
         e.preventDefault()
-        let validated = validate()
-        console.log(state)
+        let validated = validate()        
         if (validated) {
             axios.post('http://localhost:9000/api/strategy/send', state, {
                 headers: {
@@ -39,8 +38,7 @@ const NewStrategyConfig = () => {
                     sid: sid
                 }
             })
-            .then(res => {
-                console.log('inserted :' ,res.data)
+            .then(() => {
                 setState(initialState)
                 push('/settings/strategy_configs')           
             })

@@ -1,9 +1,22 @@
-import React from 'react'
-import { PropTypes } from 'prop-types'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-const UserInfo = props => {
-    const { user } = props    
+const UserInfo = () => {
+    const [ user, setUser ] = useState({})
+    
+    useEffect(() => {
+        const user_id = localStorage.getItem('id')
+        const sid = localStorage.getItem('sid')
+        axios.post(`http://localhost:9000/api/user/user_info`, {}, {
+            headers:{
+                user_id: user_id,
+                sid: sid
+            }
+        })
+        .then(res => setUser(res.data))
+        .catch(e => console.log(e))
+    }, [])
 
     return (
         <div className='configs' key={user.user_id}>
@@ -31,7 +44,3 @@ const UserInfo = props => {
     }
     
 export default UserInfo
-
-UserInfo.propTypes = {
-    user: PropTypes.array,
-}

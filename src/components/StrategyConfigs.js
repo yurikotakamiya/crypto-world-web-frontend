@@ -21,8 +21,7 @@ const StrategyConfigs = () => {
     const handleEdit = id => {
         push(`/settings/strategy_configs/edit/${id}`)
     }
-    const handleDelete = id => {
-        
+    const handleDelete = id => {        
         axios.post('http://localhost:9000/api/strategy/get_strategy_configs', {}, {
             headers:{
                 user_id: user_id,
@@ -36,7 +35,8 @@ const StrategyConfigs = () => {
         if (proceed) {
             axios.post('http://localhost:9000/api/strategy/delete', toDelete)
             .then(() => push('/settings'))
-            .catch(e => console.log(e))            
+            .catch(e => console.log(e))  
+            console.log('')          
         } else {
             push(`/settings/strategy_configs`)            
         }

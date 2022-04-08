@@ -112,8 +112,11 @@ const StrategyConfigsEdit = () => {
                     <h2>Exchange Name: {exchange}</h2>               
                     <h2>Trading Pair: {tradingPair}</h2>
                     <hr width='500'/>
-                    <label>                                
-                        <h3>Strategy</h3>
+                    <label>              
+                        <div className='required'>                            
+                            <h3>Strategy</h3>
+                            <h5>*</h5>
+                        </div>                    
                         <select 
                         name='strategy_id' 
                         onChange={handleChange}
@@ -133,8 +136,11 @@ const StrategyConfigsEdit = () => {
 
                     {
                         state.strategy_id == 1 ? (<label>
-                            <h2>Parameter (REQUIRED)</h2>
-                            <h3>Order Size</h3>
+                            <h2>Parameter</h2>
+                            <div className='required'>
+                                <h3>Order Size</h3>                            
+                                <h5>*</h5>
+                            </div>  
                             <input 
                             placeholder='Order size'
                             name='param_interval_order_size'
@@ -143,7 +149,10 @@ const StrategyConfigsEdit = () => {
                             onChange={handleChange}
                             className='text-box'
                             />
-                            <h3>Price Interval</h3>
+                            <div className='required'>
+                                <h3>Price Interval</h3>                                
+                                <h5>*</h5>
+                            </div>  
                             <input 
                             placeholder='Price Interval'
                             name='param_interval_price_interval'
@@ -152,7 +161,10 @@ const StrategyConfigsEdit = () => {
                             onChange={handleChange}
                             className='text-box'
                             />
-                            <h3>Profit Price Change</h3>
+                            <div className='required'>                            
+                                <h3>Profit Price Change</h3>
+                                <h5>*</h5>
+                            </div>  
                             <input 
                             placeholder='Profit Price Change'
                             name='param_interval_profit_price_change'
@@ -161,7 +173,10 @@ const StrategyConfigsEdit = () => {
                             onChange={handleChange}
                             className='text-box'
                             />
-                            <h3>Start Price</h3>
+                            <div className='required'>
+                                <h3>Start Price</h3>                                
+                                <h5>*</h5>
+                            </div>  
                             <input 
                             placeholder='Start Price'
                             name='param_interval_start_price'

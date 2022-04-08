@@ -1,26 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 import UserInfo from './UserInfo'
 import { Link } from 'react-router-dom'
 
 const Settings = () => {
-    
-    const [ user, setUser ] = useState({})
-    
-    useEffect(() => {
-        const user_id = localStorage.getItem('id')
-        const sid = localStorage.getItem('sid')
-
-        axios.post(`http://localhost:9000/api/user/user_info`, {}, {
-            headers:{
-                user_id: user_id,
-                sid: sid
-            }
-        })
-        .then(res => setUser(res.data))
-        .catch(e => console.log(e))
-    }, [])
-    
+   
     return (
         <div className='setting'>
             <div className='setting-title'>
@@ -28,7 +11,7 @@ const Settings = () => {
             </div>            
             <hr width='500' />
             
-            <UserInfo user={user} />
+            <UserInfo />
             
             <hr width='500' />
             <div className='configs'>

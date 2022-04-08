@@ -13,13 +13,14 @@ import ApiEdit from './components/ApiEdit'
 import UsernameEdit from './components/UsernameEdit'
 import EmailEdit from './components/EmailEdit'
 import PasswordEdit from './components/PasswordEdit'
-import NewApi from './components/NewApi'
+import ApiKeys from './components/ApiKeys'
 import MonitorConfigs from './components/MonitorConfigs'
 import MonitorConfigsEdit from './components/MonitorConfigsEdit'
 import StrategyConfigs from './components/StrategyConfigs'
 import StrategyConfigsEdit from './components/StrategyConfigsEdit'
 import NewStrategyConfig from './components/NewStrategyConfig'
 import NewMonitorConfig from './components/NewMonitorConfig'
+import NewApi from './components/NewApi'
 
 function App() {
   return (
@@ -41,11 +42,12 @@ function App() {
           <Route exact path='settings/strategy_configs/edit/:id' element={<StrategyConfigsEdit />} />
           <Route exact path='settings/new_strategy_configs' element={<NewStrategyConfig />} />
           <Route exact path='settings/new_monitor_configs' element={<NewMonitorConfig />} />
-          <Route exact path='settings/:exchange_id' element={<ApiEdit />} />  
+          <Route exact path='settings/api_config/edit/:exchange_id' element={<ApiEdit />} />  
+          <Route exact path='settings/api_config' element={<ApiKeys />} />
+          <Route exact path='settings/new_api_config' element={<NewApi />} />
           <Route exact path='settings/username/:user_id' element={<UsernameEdit />} />
           <Route exact path='settings/email/:user_id' element={<EmailEdit />} />
           <Route exact path='settings/password/:user_id' element={<PasswordEdit />} />
-          <Route exact path='settings/api_config' element={<NewApi />} />
         </Routes>
       
     </Router>
