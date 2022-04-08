@@ -17,19 +17,19 @@ const Settings = () => {
             <div className='configs'>
                 <h2>Configurations</h2>
                 <div className='config-setting'>
-                    <h3>Api Configuration</h3>
+                    <h3>Exchange API Keys</h3>
                     <Link to={'/settings/api_config'} >
                         <input type='button' className='api-edit-btn' value="Edit"/>
                     </Link>
                 </div>
                 <div className='config-setting'>
-                    <h3>Strategy Configuration</h3>
+                    <h3>Trading Strategy</h3>
                     <Link to={'/settings/strategy_configs'} className='edit'>
                         <input type='button' className='api-edit-btn' value="Edit"/>
                     </Link>
                 </div>
                 <div className='config-setting'>
-                    <h3>Monitor Configuration</h3>
+                    <h3>Trading Monitor</h3>
                     <Link to={'/settings/monitor_configs'} >
                         <input type='button' className='api-edit-btn' value="Edit"/>
                     </Link>
