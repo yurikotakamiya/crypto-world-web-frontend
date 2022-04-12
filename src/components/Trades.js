@@ -8,7 +8,7 @@ const Trades = () => {
     useEffect(() => {
         const user_id = localStorage.getItem('id')
         const sid = localStorage.getItem('sid')
-        axios.post(`http://localhost:9000/api/trade/history`, {user_id: user_id}, {
+        axios.post(`https://crypto-world-api.herokuapp.com/api/trade/history`, {user_id: user_id}, {
             headers:{
                 sid: sid,
             }

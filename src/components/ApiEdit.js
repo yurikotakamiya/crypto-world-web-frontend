@@ -24,27 +24,24 @@ const ApiEdit = () => {
         setApiKey({
             ...apiKey,
             [e.target.name]: e.target.value
-        });
+        })
     }
     const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(apiKey)
-        axios.post(`http://localhost:9000/api/apis/modify`, apiKey, {
+        e.preventDefault()        
+        axios.post(`https://crypto-world-api.herokuapp.com/api/apis/modify`, apiKey, {
             headers: {
                 user_id: user_id,
 				sid: sid
             }
         })
-            .then(res=>{
-                setApiKey(res.data);
-                push(`/settings`);
+            .then(() => {                
+				alert('Your api key was successfully updated.')		
+				push(`/settings`);
 			})
-			.catch(err=>{
-				console.log(err);
-			})
+			.catch(err => console.log(err))
 	}
 	
-	const { api_key, secret_key } = apiKey;
+	const { api_key, secret_key } = apiKey
     return (
         <div className='ComponentContainer'>
 			<div className='ModalContainer'>

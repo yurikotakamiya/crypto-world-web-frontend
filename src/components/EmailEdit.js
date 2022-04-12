@@ -6,29 +6,26 @@ import axios from 'axios'
 const PasswordEdit = () => {
     const push = useNavigate();
     const sid = localStorage.getItem('sid')
-    const { user_id } = useParams();
+    const { user_id } = useParams()
 	const [ email, setEmail ] = useState('')   
 	const [ error, setError ] = useState('')
 	
 	const handleChange = (e) => {
         setEmail(e.target.value);
-		console.log(email)
     }
     const handleSubmit = (e) => {
-        e.preventDefault();        
-        axios.post(`http://localhost:9000/api/user/change_email`, {email: email}, {
+        e.preventDefault()
+        axios.post(`https://crypto-world-api.herokuapp.com/api/user/change_email`, {email: email}, {
             headers: {
                 user_id: user_id,
 				sid: sid
             }
         })
-            .then(res => {
-                setEmail(res.data);
-                push(`/settings`);
+            .then(() => {
+				alert('Your password was successfully changed.')
+                push(`/settings`)
 			})
-			.catch(() => {
-				setError('input was invalid')
-			})
+			.catch(() => setError('input was invalid'))
 	}
     
     return (
@@ -43,7 +40,7 @@ const PasswordEdit = () => {
 							name='email'
 							type='email' 
 							className='text-box'
-							placeHolder='Email'
+							placeholder='Email'
 							/>
 						</label>							
 					<input type='submit' className='form-btn' value="Save"/>

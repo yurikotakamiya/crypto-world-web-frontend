@@ -27,21 +27,19 @@ const PasswordEdit = () => {
 				password: password.current_password,
 				newPass: password.new_password
 			}
-			axios.post(`http://localhost:9000/api/user/change_password`, passwordToSend, {
+			axios.post(`https://crypto-world-api.herokuapp.com/api/user/change_password`, passwordToSend, {
 				headers: {
 					user_id: user_id,
 					sid: sid
 				}
 			})
-				.then(res=>{
-					setPassword(res.data);
-					push(`/settings`);
+				.then(() => {			
+					alert('Your password was successfully changed.')		
+					push(`/settings`)
 				})
-				.catch(err=>{
-					console.log(err);
-				})
+				.catch(() => setError({current_password: 'current password is invalid'}))
 		} else {
-			push(`settings/password/${user_id}`)
+			push(`/settings/password/${user_id}`)
 		}
 	}
     const validate = () => {
@@ -74,9 +72,8 @@ const PasswordEdit = () => {
         })
         return isValid
     }
+	const { current_password, new_password, confirm_password } = password
 
-	
-	const { current_password, new_password, confirm_password } = password;
     return (
         <div className='ComponentContainer'>
 			<div className='ModalContainer'>

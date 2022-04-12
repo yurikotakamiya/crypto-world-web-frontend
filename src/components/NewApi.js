@@ -21,7 +21,7 @@ const NewApi = () => {
         e.preventDefault()
         const user_id = localStorage.getItem('id')
         const sid = localStorage.getItem('sid')
-        axios.post(`http://localhost:9000/api/apis/send`, state, {
+        axios.post(`https://crypto-world-api.herokuapp.com/api/apis/send`, state, {
             headers:{
                 user_id: user_id,
                 sid: sid

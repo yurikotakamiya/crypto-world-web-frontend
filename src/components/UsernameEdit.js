@@ -15,19 +15,17 @@ const PasswordEdit = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();        
-        axios.post(`http://localhost:9000/api/user/change_username`, {username: username}, {
+        axios.post(`https://crypto-world-api.herokuapp.com/api/user/change_username`, {username: username}, {
             headers: {
                 user_id: user_id,
 				sid: sid
             }
         })
-            .then(res => {
-                setUsername(res.data)
-                push('/settings')
-			})
-			.catch(() => {
-				setError('input was invalid')
-			})
+            .then(() => {
+				alert('Your username was successfully changed.')		
+				push('/settings')
+		})
+			.catch(() => setError('input was invalid'))
 	}
     return (
         <div className='ComponentContainer'>
@@ -41,7 +39,7 @@ const PasswordEdit = () => {
 							onChange={handleChange} 
 							name='username' 
 							type='text'
-							placeHolder='Username'
+							placeholder='Username'
 							className='text-box'
 							/>
 						</label>									

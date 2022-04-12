@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom'
 
 const MonitorConfigs = () => {
     const [ add, setAdd ] = useState(false)
-    const [ toDelete, setToDelete ] = useState({})
     const [ existConfig, setExistConfig ] = useState(true)
     const [ configsToShow, setConfigsToShow ] = useState([])
     const handleAdd = () => {
@@ -23,28 +22,11 @@ const MonitorConfigs = () => {
         push(`/settings/monitor_configs/edit/${id}`)
     }
     const handleDelete = id => {        
-        axios.post('http://localhost:9000/api/monitor/get_monitor_configs', {}, {
-            headers:{
-                user_id: user_id,
-                sid: sid
-            }
-        })
-        .then(res => setToDelete(res.data[id - 1]))
-        .catch(e => console.log(e))
-
-        let proceed = confirm("Are you sure you want to proceed?");
-        if (proceed) {
-            axios.post('http://localhost:9000/api/monitor/delete', toDelete)
-            .then(() => push(`/settings`))
-            .catch(e => console.log(e))
-            console.log('')
-        } else {
-            push('/settings/monitor_configs')
-        }
+        push(`/settings/monitor_configs/delete/${id}`)
     }
 
     useEffect(() => {
-        axios.post('http://localhost:9000/api/monitor/get_monitor_configs', {}, {
+        axios.post('https://crypto-world-api.herokuapp.com/api/monitor/get_monitor_configs', {}, {
             headers:{
                 user_id: user_id,
                 sid: sid

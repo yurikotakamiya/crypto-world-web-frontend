@@ -33,7 +33,7 @@ const NewMonitorConfig = () => {
         let validated = validate()
         console.log(state)
         if (validated) {
-            axios.post('http://localhost:9000/api/monitor/send', state, {
+            axios.post('https://crypto-world-api.herokuapp.com/api/monitor/send', state, {
                 headers: {
                     user_id: user_id,
                     sid: sid
@@ -79,19 +79,19 @@ const NewMonitorConfig = () => {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:9000/api/monitor/get_exchange')
+        axios.get('https://crypto-world-api.herokuapp.com/api/monitor/get_exchange')
             .then(res => setExchange(res.data))
             .catch(e => console.log(e))
 
-        axios.get('http://localhost:9000/api/strategy/get_trading_pair')
+        axios.get('https://crypto-world-api.herokuapp.com/api/strategy/get_trading_pair')
             .then(res => setTradingPair(res.data))
             .catch(e => console.log(e))
     
-        axios.get('http://localhost:9000/api/monitor/get_monitors')
+        axios.get('https://crypto-world-api.herokuapp.com/api/monitor/get_monitors')
         .then(res => setMonitor(res.data))
         .catch(e => console.log(e))
 
-        axios.get('http://localhost:9000/api/monitor/get_interval')
+        axios.get('https://crypto-world-api.herokuapp.com/api/monitor/get_interval')
             .then(res => setInterval(res.data))
             .catch(e => console.log(e))        
     }, [])

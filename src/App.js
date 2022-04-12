@@ -16,8 +16,10 @@ import PasswordEdit from './components/PasswordEdit'
 import ApiKeys from './components/ApiKeys'
 import MonitorConfigs from './components/MonitorConfigs'
 import MonitorConfigsEdit from './components/MonitorConfigsEdit'
+import MonitorConfigsDelete from './components/MonitorConfigsDelete'
 import StrategyConfigs from './components/StrategyConfigs'
 import StrategyConfigsEdit from './components/StrategyConfigsEdit'
+import StrategyConfigsDelete from './components/StrategyConfigsDelete'
 import NewStrategyConfig from './components/NewStrategyConfig'
 import NewMonitorConfig from './components/NewMonitorConfig'
 import NewApi from './components/NewApi'
@@ -39,7 +41,9 @@ function App() {
           <Route exact path='settings/strategy_configs' element={<StrategyConfigs />} />
           <Route exact path='settings/monitor_configs' element={<MonitorConfigs />} />
           <Route exact path='settings/monitor_configs/edit/:id' element={<MonitorConfigsEdit />} />
+          <Route exact path='settings/monitor_configs/delete/:id' element={<MonitorConfigsDelete />} />
           <Route exact path='settings/strategy_configs/edit/:id' element={<StrategyConfigsEdit />} />
+          <Route exact path='settings/strategy_configs/delete/:id' element={<StrategyConfigsDelete />} />
           <Route exact path='settings/new_strategy_configs' element={<NewStrategyConfig />} />
           <Route exact path='settings/new_monitor_configs' element={<NewMonitorConfig />} />
           <Route exact path='settings/api_config/edit/:exchange_id' element={<ApiEdit />} />  

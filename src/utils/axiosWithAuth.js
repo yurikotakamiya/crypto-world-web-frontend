@@ -8,7 +8,7 @@ const axiosWithAuth = () => {
             sid: sid,
             user_id: id
         },
-        baseURL:'http://localhost:9000/api',
+        baseURL:'https://crypto-world-api.herokuapp.com',
     })    
 }
 

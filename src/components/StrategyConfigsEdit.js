@@ -21,7 +21,7 @@ const StrategyConfigsEdit = () => {
         let validated = validate()
         
         if (validated) {
-            axios.post('http://localhost:9000/api/strategy/edit', state, {
+            axios.post('https://crypto-world-api.herokuapp.com/api/strategy/edit', state, {
                 headers: {
                     user_id: user_id,
                     sid: sid
@@ -64,7 +64,7 @@ const StrategyConfigsEdit = () => {
         return isValid
     }
     useEffect(() => {
-        axios.post('http://localhost:9000/api/strategy/get_strategy_configs', {}, {
+        axios.post('https://crypto-world-api.herokuapp.com/api/strategy/get_strategy_configs', {}, {
             headers:{
                 user_id: user_id,
                 sid: sid
@@ -73,7 +73,7 @@ const StrategyConfigsEdit = () => {
         .then(res => setState(res.data[id - 1]))
         .catch(e => console.log(e))
 
-        axios.get('http://localhost:9000/api/strategy/get_strategy')
+        axios.get('https://crypto-world-api.herokuapp.com/api/strategy/get_strategy')
             .then(res => setStrategy(res.data))
             .catch(e => console.log(e))
     }, [])

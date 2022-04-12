@@ -8,7 +8,7 @@ const UserInfo = () => {
     useEffect(() => {
         const user_id = localStorage.getItem('id')
         const sid = localStorage.getItem('sid')
-        axios.post(`http://localhost:9000/api/user/user_info`, {}, {
+        axios.post(`https://crypto-world-api.herokuapp.com/api/user/user_info`, {}, {
             headers:{
                 user_id: user_id,
                 sid: sid

@@ -21,7 +21,7 @@ const MonitorConfigsEdit = () => {
         e.preventDefault()
         let validated = validate()
         if (validated) {
-            axios.post('http://localhost:9000/api/monitor/edit', state, {
+            axios.post('https://crypto-world-api.herokuapp.com/api/monitor/edit', state, {
                 headers: {
                     user_id: user_id,
                     sid: sid
@@ -63,7 +63,7 @@ const MonitorConfigsEdit = () => {
         return isValid
     }
     useEffect(() => {
-        axios.post('http://localhost:9000/api/monitor/get_monitor_configs', {}, {
+        axios.post('https://crypto-world-api.herokuapp.com/api/monitor/get_monitor_configs', {}, {
             headers:{
                 user_id: user_id,
                 sid: sid
@@ -72,11 +72,11 @@ const MonitorConfigsEdit = () => {
         .then(res => setState(res.data[id - 1]))
         .catch(e => console.log(e))
                
-        axios.get('http://localhost:9000/api/monitor/get_monitors')
+        axios.get('https://crypto-world-api.herokuapp.com/api/monitor/get_monitors')
             .then(res => setMonitor(res.data))
             .catch(e => console.log(e))
 
-        axios.get('http://localhost:9000/api/monitor/get_interval')
+        axios.get('https://crypto-world-api.herokuapp.com/api/monitor/get_interval')
         .then(res => setInterval(res.data))
         .catch(e => console.log(e))     
     }, [])

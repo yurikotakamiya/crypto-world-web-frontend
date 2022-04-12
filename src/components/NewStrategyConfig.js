@@ -32,7 +32,7 @@ const NewStrategyConfig = () => {
         e.preventDefault()
         let validated = validate()        
         if (validated) {
-            axios.post('http://localhost:9000/api/strategy/send', state, {
+            axios.post('https://crypto-world-api.herokuapp.com/api/strategy/send', state, {
                 headers: {
                     user_id: user_id,
                     sid: sid
@@ -79,7 +79,7 @@ const NewStrategyConfig = () => {
     }
 
     useEffect(() => {
-        axios.post('http://localhost:9000/api/strategy/get_exchange', {}, {
+        axios.post('https://crypto-world-api.herokuapp.com/api/strategy/get_exchange', {}, {
             headers: {
                 user_id: user_id,
                 sid: sid
@@ -88,11 +88,11 @@ const NewStrategyConfig = () => {
             .then(res => setExchange(res.data))
             .catch(e => console.log(e))
 
-        axios.get('http://localhost:9000/api/strategy/get_trading_pair')
+        axios.get('https://crypto-world-api.herokuapp.com/api/strategy/get_trading_pair')
             .then(res => setTradingPair(res.data))
             .catch(e => console.log(e))
     
-        axios.get('http://localhost:9000/api/strategy/get_strategy')
+        axios.get('https://crypto-world-api.herokuapp.com/api/strategy/get_strategy')
             .then(res => setStrategy(res.data))
             .catch(e => console.log(e))
     }, [])

@@ -33,12 +33,6 @@ export const Menus = [
         cName: 'nav-text'
     },
     {
-        title: 'Charts',
-        path: '/charts',
-        icon: <AiIcons.AiOutlineHome />,
-        cName: 'nav-text'
-    },
-    {
         title: 'Setting',
         path: '/settings',
         icon: <AiIcons.AiOutlineSearch />,

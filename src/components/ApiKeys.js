@@ -12,12 +12,12 @@ const ApiKeys = () => {
     const handleDelete = id => {
         let toDelete = {user_id, exchange_id: id}
         console.log(toDelete)
-        axios.post('http://localhost:9000/api/apis/delete', toDelete)
+        axios.post('https://crypto-world-api.herokuapp.com/api/apis/delete', toDelete)
             .then(() => push('/settings'))
             .catch(e => console.log(e))
     }    
     useEffect(() => {
-        axios.post(`http://localhost:9000/api/apis/confirm`, {}, {
+        axios.post(`https://crypto-world-api.herokuapp.com/api/apis/confirm`, {}, {
             headers:{
                 user_id: user_id,
                 sid: sid
