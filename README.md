@@ -1,5 +1,5 @@
 # URL for this application
-    Crypto World: [https://crypto-world-inky.vercel.app/](https://crypto-world-inky.vercel.app/)
+Crypto World: [https://crypto-world-inky.vercel.app/](https://crypto-world-inky.vercel.app/)
 
 
 ## Available Scripts
